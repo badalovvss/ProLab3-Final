@@ -1,0 +1,126 @@
+﻿@{
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+
+    ViewData["Title"] = "Başvuru Durumu";
+    ViewData["AktifMenu"] = "BasvuruDurumu";
+
+    // ViewData badulu Controller nunchi vacche ViewBag variables ni theesukuntunnamu
+    string durum = ViewBag.GuncelDurum as string ?? "";
+    string dosyaAdi = ViewBag.BelgeAdi as string ?? "";
+    string yuklenmeTarihi = ViewBag.YuklenmeTarihi as string ?? "";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/css/sonucekranlari.css")" />
+
+<div class="sr-page">
+
+    <header class="sr-heading">
+        <div>
+            <p class="sr-eyebrow">STAJ EVRAKLARI</p>
+            <h1>Başvuru durumu</h1>
+            <p>Ek-16 başvurunuzun güncel durumunu takip edin.</p>
+        </div>
+
+        <!-- DÜZELTİLDİ: Gerçek Kontrol Sonucu sayfasına gider -->
+        <a class="sr-button sr-button-light" asp-controller="Ogrenci" asp-action="KontrolSonucu">
+            Kontrol sonucuna git
+        </a>
+    </header>
+
+    <div class="sr-grid">
+
+        <!-- GÜNCEL BAŞVURU DURUMU -->
+        <section class="sr-card">
+            <div class="sr-card-title">
+                <span class="sr-icon sr-icon-blue" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 7v5l3 2"></path>
+                    </svg>
+                </span>
+                <div>
+                    <h2>Güncel durum</h2>
+                    <p>Başvurunuza ait son bilgiler</p>
+                </div>
+            </div>
+
+            <div class="sr-current">
+                <span>Başvuru durumu</span>
+                <strong>
+                    @(string.IsNullOrWhiteSpace(durum) ? "Görüntülenecek durum bulunmuyor" : durum)
+                </strong>
+            </div>
+
+            <dl class="sr-info">
+                <div>
+                    <dt>Belge adı</dt>
+                    <dd>@(string.IsNullOrWhiteSpace(dosyaAdi) ? "—" : dosyaAdi)</dd>
+                </div>
+                <div>
+                    <dt>Yüklenme tarihi</dt>
+                    <dd>@(string.IsNullOrWhiteSpace(yuklenmeTarihi) ? "—" : yuklenmeTarihi)</dd>
+                </div>
+            </dl>
+
+            <!-- DÜZELTİLDİ: Gerçek Evrak Yükle sayfasına gider -->
+            <a class="sr-button sr-button-primary" asp-controller="Ogrenci" asp-action="EvrakYukle">
+                Ek-16 yükle
+            </a>
+        </section>
+
+        <!-- DURUM AÇIKLAMALARI -->
+        <section class="sr-card">
+            <div class="sr-card-title">
+                <span class="sr-icon sr-icon-violet" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 11v5M12 8h.01"></path>
+                    </svg>
+                </span>
+                <div>
+                    <h2>Durumların anlamı</h2>
+                    <p>Başvurunuzda karşılaşabileceğiniz durumlar</p>
+                </div>
+            </div>
+
+            <div class="sr-legend">
+                <div>
+                    <span class="sr-dot sr-blue"></span>
+                    <p>
+                        <strong>Yüklendi</strong>
+                        <small>Belge sisteme eklendi.</small>
+                    </p>
+                </div>
+                <div>
+                    <span class="sr-dot sr-purple"></span>
+                    <p>
+                        <strong>İnceleniyor</strong>
+                        <small>Belge değerlendirme aşamasında.</small>
+                    </p>
+                </div>
+                <div>
+                    <span class="sr-dot sr-coral"></span>
+                    <p>
+                        <strong>Hatalı / Eksik</strong>
+                        <small>Belgede düzeltilmesi gereken bilgiler var.</small>
+                    </p>
+                </div>
+                <div>
+                    <span class="sr-dot sr-teal"></span>
+                    <p>
+                        <strong>Onaylandı</strong>
+                        <small>Belge kontrolleri tamamlandı.</small>
+                    </p>
+                </div>
+                <div>
+                    <span class="sr-dot sr-green"></span>
+                    <p>
+                        <strong>Tamamlandı</strong>
+                        <small>Başvuru süreci tamamlandı.</small>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>

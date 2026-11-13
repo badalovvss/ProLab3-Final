@@ -1,0 +1,268 @@
+﻿@{
+    var konu = ViewData["Konu"]?.ToString() ?? "";
+
+    var baslik = konu switch
+    {
+        "ek16" => "Ek-16 Belgesi",
+        "staj" => "Staj Bilgileri",
+        "durum" => "Kontrol Sonuçları ve Başvuru Durumu",
+        "giris" => "Giriş ve Şifre",
+        _ => "Yardım"
+    };
+
+    ViewData["Title"] = baslik;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1" />
+
+    <title>
+        @baslik | Staj Evrak Yönetimi
+    </title>
+
+    <link rel="stylesheet" href="/css/login.css" />
+
+    <style>
+
+            .yardim-detay-main {
+                flex: 1;
+                display: grid;
+                place-items: center;
+                padding: 35px 20px;
+                background: #f1f6fc;
+            }
+
+            .yardim-detay-card {
+                width: min(100%, 720px);
+                padding: 32px;
+                border: 1px solid #e0e8f2;
+                border-radius: 10px;
+                background: #ffffff;
+                box-shadow: 0 8px 28px rgba(35, 55, 85, 0.07);
+            }
+
+            .yardim-detay-label {
+                margin: 0 0 10px;
+                color: #6f91c7;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+
+            .yardim-detay-card h1 {
+                margin: 0 0 14px;
+                color: #101f3d;
+                font-size: 28px;
+                line-height: 1.25;
+            }
+
+            .yardim-detay-card h2 {
+                margin: 25px 0 10px;
+                color: #263d5e;
+                font-size: 16px;
+            }
+
+            .yardim-detay-card p,
+            .yardim-detay-card li {
+                color: #697b94;
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .yardim-detay-card ul,
+            .yardim-detay-card ol {
+                padding-left: 22px;
+            }
+
+            .yardim-not {
+                margin-top: 24px;
+                padding: 14px;
+                border: 1px solid #dce8f7;
+                border-radius: 8px;
+                background: #f4f8fe;
+            }
+
+                .yardim-not p {
+                    margin: 0;
+                    color: #536d93;
+                    font-size: 13px;
+                }
+
+            .geri-link {
+                color: #315fa9;
+                font-size: 13px;
+                text-decoration: none;
+                white-space: nowrap;
+            }
+
+                .geri-link:hover {
+                    text-decoration: underline;
+                }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- ÜST BAŞLIK -->
+        <header class="header">
+
+            <div class="header-inner">
+
+                <div class="brand">
+                    Staj Evrak Doğrulama ve Yönetim Sistemi
+                </div>
+
+                <a class="geri-link"
+                   href="@Url.Action("Login", "FrontendPreview", new { yardim = "ac" })">
+
+                    ← Yardım konularına dön
+
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <main class="yardim-detay-main">
+
+            <article class="yardim-detay-card">
+
+                <p class="yardim-detay-label">
+                    YARDIM MERKEZİ
+                </p>
+
+                <h1>@baslik</h1>
+
+
+                @if (konu == "ek16")
+                {
+                    <p>
+                        Ek-16, staj başvurunuz için sisteme seçilecek
+                        belgedir.
+                    </p>
+
+                    <h2>Belgeyi seçme adımları</h2>
+
+                    <ol>
+                        <li>Öğrenci panelindeki <strong>Ek-16 Yükle</strong> menüsünü açın.</li>
+                        <li>Dosya seçme alanından Ek-16 belgenizi seçin.</li>
+                        <li>Belgenin desteklenen dosya türlerinden biri olduğundan emin olun.</li>
+                    </ol>
+
+                    <h2>Desteklenen dosya türleri</h2>
+
+                    <ul>
+                        <li>Word: .doc ve .docx</li>
+                        <li>PDF: .pdf</li>
+                        <li>Görsel: .jpg, .jpeg ve .png</li>
+                    </ul>
+
+                    <div class="yardim-not">
+                        <p>
+                            Bu sürümde dosya seçimi önizlemedir.
+                            Gerçek yükleme backend bağlantısından sonra yapılacaktır.
+                        </p>
+                    </div>
+                }
+                else if (konu == "staj")
+                {
+                    <p>
+                        Staj bilgileri bölümünde staj yapacağınız tarihleri
+                        ve haftalık günleri seçebilirsiniz.
+                    </p>
+
+                    <h2>Bilgileri girme adımları</h2>
+
+                    <ol>
+                        <li>Öğrenci panelindeki <strong>Staj Bilgileri</strong> menüsünü açın.</li>
+                        <li>Başlangıç ve bitiş tarihlerini seçin.</li>
+                        <li>Hafta içinde staj yapacağınız günleri işaretleyin.</li>
+                        <li><strong>Bilgileri Kontrol Et</strong> düğmesine tıklayın.</li>
+                    </ol>
+
+                    <p>
+                        Bitiş tarihi, başlangıç tarihinden önce olmamalıdır.
+                    </p>
+
+                    <div class="yardim-not">
+                        <p>
+                            Seçilen bilgiler bu önizlemede kaydedilmez.
+                            Gerçek kayıt ve staj günü hesaplaması entegrasyon
+                            sonrasında çalışacaktır.
+                        </p>
+                    </div>
+                }
+                else if (konu == "durum")
+                {
+                    <p>
+                        Başvuru durumu, Ek-16 belgesinin işlem aşamasını
+                        takip etmek için kullanılacaktır.
+                    </p>
+
+                    <h2>Temel durumlar</h2>
+
+                    <ul>
+                        <li><strong>Yüklendi:</strong> Belge sisteme gönderilmiştir.</li>
+                        <li><strong>İnceleniyor:</strong> Belgenin kontrol süreci devam etmektedir.</li>
+                        <li><strong>Hatalı / Eksik:</strong> Düzeltilmesi gereken bir bilgi bulunmuştur.</li>
+                        <li><strong>Onaylandı:</strong> Belge onaylanmıştır.</li>
+                        <li><strong>Tamamlandı:</strong> Başvuru tamamlanmıştır.</li>
+                    </ul>
+
+                    <div class="yardim-not">
+                        <p>
+                            Gerçek kontrol ve durum bilgileri backend bağlantısı
+                            yapıldıktan sonra ilgili sayfalarda gösterilecektir.
+                        </p>
+                    </div>
+                }
+                else if (konu == "giris")
+                {
+                    <p>
+                        Sisteme giriş için giriş ekranındaki bilgilerinizi
+                        kullanabilirsiniz.
+                    </p>
+
+                    <h2>Şifremi unuttum</h2>
+
+                    <p>
+                        Giriş ekranındaki <strong>Şifremi unuttum?</strong>
+                        seçeneği, şifre sıfırlama alanını açar.
+                    </p>
+
+                    <div class="yardim-not">
+                        <p>
+                            Şifre sıfırlama alanı şu anda önizlemedir.
+                            Henüz sıfırlama e-postası gönderilmez.
+                        </p>
+                    </div>
+                }
+
+            </article>
+
+        </main>
+
+
+        <footer class="footer">
+
+            <span>
+                © 2026 Staj Evrak Yönetim Sistemi
+            </span>
+
+        </footer>
+
+    </div>
+
+</body>
+</html>

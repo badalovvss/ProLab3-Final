@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Staj Bilgileri";
+    ViewData["AktifMenu"] = "StajBilgileri";
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+}
+<div class="dashboard">
+
+    <!-- SAYFA BAŞLIĞI -->
+    <div class="page-heading">
+        <div>
+            <p class="page-label">ÖĞRENCİ PANELİ</p>
+            <h1>Staj Bilgileri</h1>
+            <p class="page-description">Staj tarihlerinizi ve haftalık çalışma günlerinizi seçin.</p>
+        </div>
+    </div>
+
+    <!-- STAJ DÖNEMİ KARTI -->
+    <section class="wide-card form-card">
+        <div class="section-heading">
+            <div>
+                <h2>Staj Dönemi</h2>
+                <p>Başlangıç ve bitiş tarihlerini girerek staj günlerinizi seçin.</p>
+            </div>
+        </div>
+
+        <!-- C# Backend'e Veri Gönderen Form -->
+        <form asp-controller="Ogrenci" asp-action="StajBilgileri" method="post">
+
+            <!-- TARİHLER -->
+            <div class="two-columns">
+                <div class="field">
+                    <label for="baslangicTarihi">Başlangıç Tarihi</label>
+                    <input type="date" id="baslangicTarihi" name="baslangicTarihi" required />
+                </div>
+                <div class="field">
+                    <label for="bitisTarihi">Bitiş Tarihi</label>
+                    <input type="date" id="bitisTarihi" name="bitisTarihi" required />
+                </div>
+            </div>
+
+            <!-- STAJ GÜNLERİ -->
+            <div class="day-section">
+                <strong>Staj Yapılan Günler</strong>
+                <div class="days">
+                    <label class="day"><input type="checkbox" name="stajGunleri" value="Pazartesi" /><span>Pzt</span></label>
+                    <label class="day"><input type="checkbox" name="stajGunleri" value="Sali" /><span>Sal</span></label>
+                    <label class="day"><input type="checkbox" name="stajGunleri" value="Carsamba" /><span>Çar</span></label>
+                    <label class="day"><input type="checkbox" name="stajGunleri" value="Persembe" /><span>Per</span></label>
+                    <label class="day"><input type="checkbox" name="stajGunleri" value="Cuma" /><span>Cum</span></label>
+                    <label class="day"><input type="checkbox" name="stajGunleri" value="Cumartesi" /><span>Cmt</span></label>
+                    <label class="day"><input type="checkbox" name="stajGunleri" value="Pazar" /><span>Paz</span></label>
+                </div>
+                <p class="small-text">Staj yapacağınız günleri seçin.</p>
+            </div>
+
+            <!-- UYARI MESAJLARI (Backend'den Gelecek) -->
+            @if (ViewBag.Hata != null)
+            {
+                <div style="color: #721c24; background-color: #f8d7da; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #f5c6cb;">
+                    @ViewBag.Hata
+                </div>
+            }
+            @if (ViewBag.Basari != null)
+            {
+                <div style="color: #155724; background-color: #d4edda; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #c3e6cb;">
+                    @ViewBag.Basari
+                </div>
+            }
+
+            <!-- DÜĞME -->
+            <div class="form-actions">
+                <button type="submit" class="primary-button">Bilgileri Kaydet</button>
+            </div>
+        </form>
+    </section>
+</div>

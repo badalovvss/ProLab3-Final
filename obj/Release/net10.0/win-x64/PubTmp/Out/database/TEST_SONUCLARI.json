@@ -1,0 +1,144 @@
+{
+  "tarih_utc": "2026-10-26T15:16:10.135680+00:00",
+  "mysql_surumu": "8.0.46-0ubuntu0.24.04.3",
+  "test_sayisi": 27,
+  "basarili": true,
+  "testler": [
+    {
+      "test": "test_01_schema_and_seed",
+      "aciklama": "Beş tablo, altı kullanıcı ve tam öğrenci alanları oluşturulur.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_02_hashes",
+      "aciklama": "Demo parolalarının gerçek bcrypt özetleri doğrulanır; tuzlar farklıdır.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_03_unique_keys",
+      "aciklama": "Kimlik, öğrenci no, e-posta ve kullanıcı adı tekrarları reddedilir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_04_required_student_fields",
+      "aciklama": "Öğrenci veri setinin zorunlu alanları NULL olamaz.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_05_admin_nullable_student_fields",
+      "aciklama": "Admin için sahte öğrenci/kimlik bilgisi zorunlu değildir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_06_identity_format",
+      "aciklama": "T.C. ve yabancı kimlik biçimleri uyrukla birlikte denetlenir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_07_leading_zero",
+      "aciklama": "Öğrenci numarasındaki baştaki sıfır korunur.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_08_phone_email",
+      "aciklama": "Hatalı telefon/e-posta ve boş ad reddedilir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_09_year_and_negative_days",
+      "aciklama": "Ardışık olmayan öğretim yılı ve negatif staj günü reddedilir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_10_password_and_role",
+      "aciklama": "Açık parola ve tanımsız rol reddedilir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_11_future_birth",
+      "aciklama": "Gelecekteki doğum tarihi reddedilir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_12_all_upload_formats",
+      "aciklama": "Word/PDF/JPG/JPEG/PNG metaverisi kabul edilir; birden çok evrak yüklenir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_13_upload_rejections",
+      "aciklama": "Uygun olmayan format, MIME, dosya yolu, boyut ve belge türü reddedilir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_14_owner",
+      "aciklama": "Admin veya olmayan kullanıcı evrak sahibi olamaz.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_15_owner_integrity",
+      "aciklama": "Evrak sahibinin silinmesi, admin yapılması ve evrak devri reddedilir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_16_midterm_boundary",
+      "aciklama": "Final durumları, Google Form URL ve OCR raporu vizede engellenir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_17_unknown_user_logged",
+      "aciklama": "Bilinmeyen kullanıcı girişleri kullanıcı FK'sı NULL olarak loglanır.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_18_successful_login",
+      "aciklama": "Başarılı giriş rol taşıyan geçerli oturum oluşturur.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_19_success_resets_counter",
+      "aciklama": "Kilitlenmeden önce doğru parola hata sayacını sıfırlar.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_20_five_failures_lock",
+      "aciklama": "Tam beş hatada kilitlenir; kilitli hesap doğru parolayla açılmaz.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_21_aliases_share_counter",
+      "aciklama": "Kullanıcı adı ve e-posta aynı kilit sayacını kullanır.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_22_logout",
+      "aciklama": "Çıkış oturumu iptal eder ve tekrar çağrılabilir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_23_expiry_and_inactive",
+      "aciklama": "Süresi dolmuş oturum ve pasif kullanıcı erişemez.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_24_admin_unlock",
+      "aciklama": "Kilit yalnız geçerli admin oturumuyla açılır; eski oturumlar iptal edilir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_25_concurrent_failed_logins",
+      "aciklama": "Eşzamanlı beş hatalı girişte sayaç artışları kaybolmaz.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_26_import_transaction_rollback",
+      "aciklama": "Veri setinin son satırı hatalıysa önceki ekleme de geri alınabilir.",
+      "sonuc": "GECTI"
+    },
+    {
+      "test": "test_27_bad_session_rolls_back_login",
+      "aciklama": "Geçersiz oturum hash'i giriş güncellemesini/logunu atomik geri alır.",
+      "sonuc": "GECTI"
+    }
+  ],
+  "notlar": "Gerçek MySQL üzerinde yürütülmüştür. Yalnızca rastgele geçici test şeması kullanılır."
+}

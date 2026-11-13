@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Yönetici Paneli";
+    ViewData["AktifMenu"] = "AnaSayfa";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+}
+<div class="dashboard">
+
+    <!-- SAYFA BAŞLIĞI -->
+    <div class="page-heading">
+        <div>
+            <p class="page-label">ADMİN PANELİ</p>
+            <h1>Yönetici Paneli</h1>
+            <p class="page-description">Veri seti ve başvuru bilgilerini bu panelden takip edebilirsiniz.</p>
+        </div>
+    </div>
+
+    <!-- GENEL ÖZET -->
+    <section class="wide-card summary-card">
+        <div class="summary-heading">
+            <span class="card-icon blue">
+                <svg aria-hidden="true"><use href="#admin-document"></use></svg>
+            </span>
+            <div>
+                <h2>Genel Bakış</h2>
+                <p>Başvurulara ait özet bilgiler.</p>
+            </div>
+        </div>
+
+        <div class="summary-grid">
+            <div class="summary-item">
+                <div class="summary-icon belge-renk">
+                    <svg aria-hidden="true"><use href="#admin-document"></use></svg>
+                </div>
+                <div>
+                    <span>Kayıtlı Öğrenci</span>
+                    <!-- DİNAMİK VERİ BAĞLANTISI -->
+                    <strong>@(ViewBag.ToplamBasvuru ?? 0)</strong>
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-icon durum-renk">
+                    <svg aria-hidden="true"><use href="#admin-upload"></use></svg>
+                </div>
+                <div>
+                    <span>Yüklenen Ek-16</span>
+                    <!-- DİNAMİK VERİ BAĞLANTISI -->
+                    <strong>@(ViewBag.YuklenenEk16 ?? 0)</strong>
+                </div>
+            </div>
+
+            <div class="summary-item">
+                <div class="summary-icon takvim-renk">
+                    <svg aria-hidden="true"><use href="#admin-check"></use></svg>
+                </div>
+                <div>
+                    <span>Tamamlanan</span>
+                    <!-- DİNAMİK VERİ BAĞLANTISI -->
+                    <strong>@(ViewBag.Tamamlanan ?? 0)</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VERİ SETİ BİLGİSİ -->
+    <section class="wide-card">
+        <div class="section-heading">
+            <div>
+                <h2>Öğrenci Veri Seti</h2>
+                <p>Öğrenci veri dosyasını ilgili sayfadan seçebilirsiniz.</p>
+            </div>
+        </div>
+
+        <!-- DÜZELTİLDİ: Gerçek Admin Controller'ına bağlanıyor -->
+        <a class="admin-link-button" asp-controller="Admin" asp-action="VeriSeti">
+            Veri Seti Sayfasına Git →
+        </a>
+    </section>
+</div>

@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "İletişim";
+    ViewData["AktifMenu"] = "";
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+}
+
+<div class="dashboard">
+
+    <div class="page-heading">
+
+        <div>
+
+            <p class="page-label">ÖĞRENCİ PANELİ</p>
+
+            <h1>İletişim</h1>
+
+            <p class="page-description">
+                İletişim alanının önizlemesini bu sayfada görebilirsiniz.
+            </p>
+
+        </div>
+
+        <span class="preview-badge">
+            Arayüz önizlemesi
+        </span>
+
+    </div>
+
+
+    <section class="wide-card form-card">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>Mesaj</h2>
+
+                <p>
+                    Mesaj gönderme işlemi daha sonra bir iletişim
+                    sistemiyle bağlanabilir.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form class="preview-form" method="post">
+
+            <div class="iletisim-alan">
+
+                <label for="iletisimAdSoyad">
+                    Ad Soyad
+                </label>
+
+                <input type="text"
+                       id="iletisimAdSoyad"
+                       name="adSoyad"
+                       placeholder="Adınızı ve soyadınızı girin"
+                       required />
+
+            </div>
+
+
+            <div class="iletisim-alan">
+
+                <label for="iletisimEposta">
+                    E-posta
+                </label>
+
+                <input type="email"
+                       id="iletisimEposta"
+                       name="eposta"
+                       placeholder="E-posta adresinizi girin"
+                       required />
+
+            </div>
+
+
+            <div class="iletisim-alan">
+
+                <label for="iletisimMesaj">
+                    Mesajınız
+                </label>
+
+                <textarea id="iletisimMesaj"
+                          name="mesaj"
+                          rows="5"
+                          placeholder="Mesajınızı yazın"
+                          required></textarea>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button type="submit" class="primary-button">
+                    Mesajı Kontrol Et
+                </button>
+
+            </div>
+
+
+            <p class="form-message"
+               role="status"
+               hidden></p>
+
+        </form>
+
+    </section>
+
+</div>

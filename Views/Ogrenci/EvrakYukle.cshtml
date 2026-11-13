@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Ek-16 Yükle";
+    ViewData["AktifMenu"] = "Ek16Yukle";
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+}
+
+<div class="dashboard">
+    <div class="page-heading">
+        <div>
+            <p class="page-label">ÖĞRENCİ PANELİ</p>
+            <h1>Ek-16 Yükle</h1>
+            <p class="page-description">Staj başvuru belgenizi bu alandan seçebilirsiniz.</p>
+        </div>
+    </div>
+
+    <section class="wide-card form-card">
+        <div class="section-heading">
+            <div>
+                <h2>Belge Yükleme</h2>
+                <p>Yalnızca Ek-16 belgesi için dosya seçin ve geçerli Google Form bağlantınızı ekleyin.</p>
+            </div>
+        </div>
+
+        <form asp-controller="Ogrenci" asp-action="EvrakYukle" method="post" enctype="multipart/form-data">
+
+            <div class="upload-area">
+                <svg aria-hidden="true">
+                    <use href="#icon-upload"></use>
+                </svg>
+                <strong>Ek-16 dosyanızı seçin</strong>
+                <span>Word, PDF, JPEG veya PNG</span>
+            </div>
+
+            <div class="field file-field" style="margin-bottom: 15px;">
+                <label for="evrakDosyasi">Belge</label>
+                <input type="file" id="evrakDosyasi" name="evrakDosyasi" accept=".doc,.docx,.pdf,.jpg,.jpeg,.png" required />
+            </div>
+
+            <div class="field" style="margin-bottom: 20px;">
+                <label for="googleFormUrl">Google Form URL</label>
+                <input type="url" id="googleFormUrl" name="googleFormUrl" class="form-control" placeholder="https://..." required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+            </div>
+
+            @if (ViewBag.Hata != null)
+            {
+                <div style="color: #721c24; background-color: #f8d7da; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #f5c6cb;">
+                    @ViewBag.Hata
+                </div>
+            }
+
+            @if (ViewBag.Basari != null)
+            {
+                <div style="color: #155724; background-color: #d4edda; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #c3e6cb;">
+                    @ViewBag.Basari
+                </div>
+            }
+            @if (ViewBag.AnalizRaporu != null)
+            {
+                <div style="margin-bottom: 20px; padding: 15px; border-radius: 5px; background-color: #e9ecef; border-left: 5px solid #007bff;">
+                    <strong>Sistem İnceleme Raporu:</strong> <br />
+                    @ViewBag.AnalizRaporu
+                </div>
+            }
+
+            <div class="form-actions">
+                <button type="submit" class="primary-button">Belgeyi Yükle</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- YÜKLENEN BELGELERİ LİSTELEME ALANI (VERİTABANI BAĞLANTILI) -->
+    @if (ViewBag.Evraklarim != null && ((List<StajYönetimSistemi.Models.Evrak>)ViewBag.Evraklarim).Count > 0)
+    {
+        <section class="wide-card" style="margin-top: 20px;">
+            <div class="section-heading">
+                <div>
+                    <h2>Yüklenen Belgelerim</h2>
+                    <p>Sisteme yüklediğiniz belgeleri ve onay durumlarını buradan takip edebilirsiniz.</p>
+                </div>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 15px;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #eee; background-color: #f8f9fa;">
+                        <th style="padding: 12px;">Dosya</th>
+                        <th style="padding: 12px;">Google Form</th>
+                        <th style="padding: 12px;">Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var evrak in (List<StajYönetimSistemi.Models.Evrak>)ViewBag.Evraklarim)
+                    {
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 12px;">
+                                <a href="@evrak.DosyaYolu" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">
+                                    📄 Belgeyi Görüntüle
+                                </a>
+                            </td>
+                            <td style="padding: 12px;">
+                                <a href="@evrak.GoogleFormUrl" target="_blank" style="color: #6c757d;">🔗 Linke Git</a>
+                            </td>
+                            <td style="padding: 12px;">
+                                @if (evrak.Statu == "Onay Bekliyor")
+                                {
+                                    <span style="background-color: #fff3cd; color: #856404; padding: 5px 10px; border-radius: 5px; font-weight: 500;">⏳ @evrak.Statu</span>
+                                }
+                                else if (evrak.Statu == "Onaylandı")
+                                {
+                                    <span style="background-color: #d4edda; color: #155724; padding: 5px 10px; border-radius: 5px; font-weight: 500;">✅ @evrak.Statu</span>
+                                }
+                                else
+                                {
+                                    <span style="background-color: #f8d7da; color: #721c24; padding: 5px 10px; border-radius: 5px; font-weight: 500;">❌ @evrak.Statu</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </section>
+    }
+</div>

@@ -1,0 +1,69 @@
+﻿@model StajYönetimSistemi.Models.Ogrenci
+
+@{
+    ViewData["Title"] = "Profilim";
+    ViewData["AktifMenu"] = "Profil"; // Sol menüde aktif görünmesi için
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+}
+
+<div class="dashboard">
+
+    <!-- SAYFA BAŞLIĞI -->
+    <div class="page-heading">
+
+        <div>
+            <p class="page-label">ÖĞRENCİ PANELİ</p>
+            <h1>Profilim</h1>
+            <p class="page-description">
+                Öğrenci bilgilerinizi bu sayfada görüntüleyebilirsiniz.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- PROFİL KARTI -->
+    <section class="wide-card form-card">
+
+        <div class="profil-baslik">
+
+            <span class="profil-simge">
+                <svg aria-hidden="true">
+                    <use href="#icon-user"></use>
+                </svg>
+            </span>
+
+            <div>
+                <h2>Öğrenci Bilgileri</h2>
+                <p>
+                    Hesabınıza ait temel bilgiler.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="profil-bilgileri">
+
+            <div class="profil-alani">
+                <span>Ad Soyad</span>
+                <strong>@ViewBag.AdSoyad</strong>   
+            </div>
+
+            <div class="profil-alani">
+                <span>E-posta</span>
+                <strong>@ViewBag.Eposta</strong>
+            </div>
+
+            <div class="profil-alani">
+                <span>Öğrenci Numarası</span>
+                <strong>@ViewBag.OgrenciNo</strong>
+            </div>
+
+            <div class="profil-alani">
+                <span>Bölüm</span>
+                <strong>@ViewBag.Bolum</strong>
+            </div>
+
+        </div>
+
+    </section>
+</div>

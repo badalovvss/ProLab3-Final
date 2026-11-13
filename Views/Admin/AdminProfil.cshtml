@@ -1,0 +1,98 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+
+    ViewData["Title"] = "Profilim";
+    ViewData["AktifMenu"] = "Profil";
+
+    string adSoyad =
+        ViewData["AdSoyad"]?.ToString() ?? "";
+
+    string eposta =
+        ViewData["Eposta"]?.ToString() ?? "";
+}
+
+<link rel="stylesheet"
+      href="@Url.Content("~/css/adminbasvuru.css")" />
+
+<div class="ab-page">
+
+    <div class="ab-page-heading">
+
+        <div>
+            <p class="ab-eyebrow">HESAP BİLGİLERİ</p>
+
+            <h1>Profilim</h1>
+
+            <p class="ab-subtitle">
+                Yönetici hesabınıza ait bilgileri görüntüleyin.
+            </p>
+        </div>
+        <a class="ab-button ab-button-outline" asp-controller="Admin" asp-action="Index">
+            Ana sayfaya dön
+        </a>
+
+    </div>
+
+    <section class="ab-card" style="max-width: 700px;">
+
+        <div class="ab-card-heading">
+
+            <div class="ab-icon ab-icon-blue"
+                 aria-hidden="true">
+
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <circle cx="12"
+                            cy="8"
+                            r="3.5"></circle>
+
+                    <path d="M5 20v-1a7 7 0 0 1 14 0v1"></path>
+
+                </svg>
+
+            </div>
+
+            <div>
+                <h2>Yönetici bilgileri</h2>
+                <p>Hesap ve iletişim bilgileri</p>
+            </div>
+
+        </div>
+
+        <dl class="ab-details">
+
+            <div>
+                <dt>Ad soyad</dt>
+
+                <dd>
+                    @(string.IsNullOrWhiteSpace(adSoyad)
+                        ? "—"
+                        : adSoyad)
+                </dd>
+            </div>
+
+            <div>
+                <dt>E-posta</dt>
+
+                <dd>
+                    @(string.IsNullOrWhiteSpace(eposta)
+                        ? "—"
+                        : eposta)
+                </dd>
+            </div>
+
+            <div>
+                <dt>Hesap türü</dt>
+                <dd>Yönetici</dd>
+            </div>
+
+        </dl>
+
+    </section>
+
+</div>

@@ -1,0 +1,192 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+    ViewData["Title"] = "Başvuru Ayrıntıları";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/css/adminbasvuru.css")" />
+
+<div class="ab-page">
+
+    <!-- GERİ DÖN BUTONU -->
+    <a class="ab-back" href="/Admin/AdminListe">
+        <span aria-hidden="true">←</span>
+        Başvurulara dön
+    </a>
+
+    <div class="ab-page-heading">
+        <div>
+            <p class="ab-eyebrow">BAŞVURU YÖNETİMİ</p>
+            <h1>Başvuru ayrıntıları</h1>
+            <p class="ab-subtitle">
+                Öğrenci, staj ve Ek-16 belgesine ait bilgiler.
+            </p>
+        </div>
+        <!-- SAĞ ÜSTTEKİ DURUM BİLGİSİ -->
+        <span class="ab-status" style="font-weight: bold;">
+            @(ViewBag.Detay != null ? ViewBag.Detay.AdSoyad + " Başvurusu" : "Kayıt seçilmedi")
+        </span>
+    </div>
+
+    <div class="ab-grid">
+        <!-- ÖĞRENCİ BİLGİLERİ -->
+        <section class="ab-card">
+            <div class="ab-card-heading">
+                <div class="ab-icon ab-icon-blue" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="3.5"></circle>
+                        <path d="M5 20a7 7 0 0 1 14 0"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Öğrenci bilgileri</h2>
+                    <p>Başvuru sahibine ait bilgiler</p>
+                </div>
+            </div>
+            <dl class="ab-details">
+                <div>
+                    <dt>Ad soyad</dt>
+                    <dd>@(ViewBag.Detay != null ? ViewBag.Detay.AdSoyad : "—")</dd>
+                </div>
+                <div>
+                    <dt>Öğrenci numarası</dt>
+                    <dd>@(ViewBag.Detay != null ? ViewBag.Detay.OgrenciNo : "—")</dd>
+                </div>
+                <div>
+                    <dt>Bölüm</dt>
+                    <dd>@(ViewBag.Detay != null ? ViewBag.Detay.Bolum : "—")</dd>
+                </div>
+                <div>
+                    <dt>E-posta</dt>
+                    <dd>@(ViewBag.Detay != null ? ViewBag.Detay.Eposta : "—")</dd>
+                </div>
+            </dl>
+        </section>
+
+        <!-- STAJ BİLGİLERİ -->
+        <section class="ab-card">
+            <div class="ab-card-heading">
+                <div class="ab-icon ab-icon-violet" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                        <path d="M7 3v4M17 3v4M3 10h18M8 14h3M8 17h5"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Staj bilgileri</h2>
+                    <p>Başvuruya ait staj dönemi</p>
+                </div>
+            </div>
+            <dl class="ab-details">
+                <div>
+                    <dt>Başlangıç tarihi</dt>
+                    <dd>—</dd>
+                </div>
+                <div>
+                    <dt>Bitiş tarihi</dt>
+                    <dd>—</dd>
+                </div>
+                <div>
+                    <dt>Seçilen günler</dt>
+                    <dd>—</dd>
+                </div>
+                <div>
+                    <dt>Staj gün sayısı</dt>
+                    <dd>—</dd>
+                </div>
+            </dl>
+        </section>
+    </div>
+
+    <!-- EK-16 BELGESİ -->
+    <section class="ab-card ab-wide-card">
+        <div class="ab-card-heading ab-list-heading">
+            <div class="ab-heading-group">
+                <div class="ab-icon ab-icon-teal" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 3h8l4 4v14H6z"></path>
+                        <path d="M14 3v5h4M9 12h6M9 16h6"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Ek-16 belgesi</h2>
+                    <p>Yüklenen belgeye ait bilgiler</p>
+                </div>
+            </div>
+
+            <!-- BELGEYİ GÖRÜNTÜLE BUTONU (PDF'Yİ AÇAR) -->
+            @if (ViewBag.Detay != null && !string.IsNullOrEmpty(ViewBag.Detay.DosyaYolu))
+            {
+                <a href="@ViewBag.Detay.DosyaYolu" target="_blank" class="ab-button ab-button-outline" style="text-decoration: none;">
+                    Belgeyi görüntüle
+                </a>
+            }
+            else
+            {
+                <button type="button" class="ab-button ab-button-outline" disabled>
+                    Belge bulunamadı
+                </button>
+            }
+        </div>
+        <dl class="ab-inline-details">
+            <div>
+                <dt>Dosya adı</dt>
+                <dd>Ek-16.pdf</dd>
+            </div>
+            <div>
+                <dt>Yüklenme tarihi</dt>
+                <!-- DB'de tarih tutmadığımız için şimdilik bugünün tarihi gösteriliyor -->
+                <dd>@DateTime.Now.ToShortDateString()</dd>
+            </div>
+            <div>
+                <dt>Başvuru durumu</dt>
+                <dd>
+                    <strong style="color: #007bff;">
+                        @(ViewBag.Detay != null ? ViewBag.Detay.Statu : "—")
+                    </strong>
+                </dd>
+            </div>
+        </dl>
+    </section>
+
+    <!-- KONTROL SONUÇLARI -->
+    <section class="ab-card ab-wide-card">
+        <div class="ab-card-heading ab-list-heading">
+            <div class="ab-heading-group">
+                <div class="ab-icon ab-icon-coral" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 8v4M12 16h.01"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Kontrol sonuçları</h2>
+                    <p>Belge incelemesine ait rapor</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DURUMA GÖRE DİNAMİK MESAJ -->
+        <div class="ab-report-empty" style="font-weight: 500; color: #495057;">
+            @if (ViewBag.Detay != null)
+            {
+                if (ViewBag.Detay.Statu == "Onaylandı")
+                {
+                    <span style="color: #155724;">✅ Belge sistem tarafından kontrol edildi, eksiksiz bulundu ve onaylandı.</span>
+                }
+                else if (ViewBag.Detay.Statu == "Reddedildi")
+                {
+                    <span style="color: #721c24;">❌ Belgede eksik veya hatalı bilgi tespit edildiği için reddedildi.</span>
+                }
+                else
+                {
+                    <span style="color: #856404;">⏳ Belge sisteme başarıyla yüklendi, şu an yönetici incelemesi bekleniyor.</span>
+                }
+            }
+            else
+            {
+                <span>Görüntülenecek kontrol sonucu bulunmuyor.</span>
+            }
+        </div>
+    </section>
+
+</div>

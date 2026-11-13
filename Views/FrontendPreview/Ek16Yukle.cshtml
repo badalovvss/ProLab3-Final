@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Ek-16 Yükle";
+    ViewData["AktifMenu"] = "Ek16Yukle";
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+}
+
+<div class="dashboard">
+
+    <div class="page-heading">
+
+        <div>
+
+            <p class="page-label">ÖĞRENCİ PANELİ</p>
+
+            <h1>Ek-16 Yükle</h1>
+
+            <p class="page-description">
+                Staj başvuru belgenizi bu alandan seçebilirsiniz.
+            </p>
+
+        </div>
+
+        <span class="preview-badge">Arayüz önizlemesi</span>
+
+    </div>
+
+
+    <section class="wide-card form-card">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>Belge Yükleme</h2>
+
+                <p>
+                    Yalnızca Ek-16 belgesi için dosya seçin.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form class="preview-form"
+              method="post"
+              enctype="multipart/form-data">
+
+            <div class="upload-area">
+
+                <svg aria-hidden="true">
+                    <use href="#icon-upload"></use>
+                </svg>
+
+                <strong>Ek-16 dosyanızı seçin</strong>
+
+                <span>
+                    Word, PDF, JPEG veya PNG
+                </span>
+
+            </div>
+
+
+            <div class="field file-field">
+
+                <label for="yuklenenDosya">
+                    Belge
+                </label>
+
+                <input type="file"
+                       id="yuklenenDosya"
+                       name="yuklenenDosya"
+                       accept=".doc,.docx,.pdf,.jpg,.jpeg,.png"
+                       required />
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button type="submit" class="primary-button">
+                    Belgeyi Kontrol Et
+                </button>
+
+            </div>
+
+            <p class="form-message"
+               role="status"
+               hidden></p>
+
+        </form>
+
+    </section>
+
+</div>

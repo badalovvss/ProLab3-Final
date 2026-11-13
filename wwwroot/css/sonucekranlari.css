@@ -1,0 +1,369 @@
+﻿/* SAYFA GENELİ */
+
+.sr-page {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 6px 0 36px;
+    color: #23344d;
+}
+
+    .sr-page * {
+        box-sizing: border-box;
+    }
+
+/* BAŞLIK */
+
+.sr-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+    .sr-heading .sr-eyebrow {
+        margin: 0 0 8px;
+        color: #6680a3;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+    }
+
+    .sr-heading h1 {
+        margin: 0;
+        color: #1d2e49;
+        font-size: 27px;
+        line-height: 1.25;
+    }
+
+    .sr-heading p {
+        margin: 8px 0 0;
+        color: #78889e;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+/* KARTLAR */
+
+.sr-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.9fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.sr-card {
+    min-width: 0;
+    padding: 23px;
+    border: 1px solid #e4ebf5;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(40, 67, 108, 0.05);
+}
+
+.sr-card-title {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+    .sr-card-title h2 {
+        margin: 0;
+        color: #253851;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .sr-card-title p {
+        margin: 4px 0 0;
+        color: #8795a8;
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+/* SİMGELER */
+
+.sr-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+}
+
+    .sr-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+.sr-icon-blue {
+    background: #eaf2ff;
+    color: #467fc8;
+}
+
+.sr-icon-violet {
+    background: #f1edff;
+    color: #8169c9;
+}
+
+/* BELGE ADI */
+
+.sr-file-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 13px 0;
+    border-top: 1px solid #edf1f7;
+    border-bottom: 1px solid #edf1f7;
+    color: #7c8ba0;
+    font-size: 13px;
+}
+
+    .sr-file-row strong {
+        color: #455771;
+        text-align: right;
+        overflow-wrap: anywhere;
+    }
+
+/* BOŞ KONTROL SONUCU */
+
+.sr-empty {
+    padding: 32px 10px 12px;
+    text-align: center;
+}
+
+.sr-empty-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 15px;
+    border-radius: 15px;
+    background: #f0f5fd;
+    color: #6687b8;
+}
+
+    .sr-empty-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+.sr-empty h3,
+.sr-result h3 {
+    margin: 0;
+    color: #354b68;
+    font-size: 15px;
+}
+
+.sr-empty p,
+.sr-result p {
+    margin: 8px 0 18px;
+    color: #8996a8;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* KONTROL SONUCU */
+
+.sr-result {
+    margin-top: 20px;
+    padding: 18px;
+    border: 1px solid #e4ebf5;
+    border-radius: 12px;
+    background: #f8faff;
+}
+
+    .sr-result p {
+        margin-bottom: 0;
+        color: #53667f;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+    }
+
+/* BUTONLAR */
+
+.sr-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.sr-button-primary {
+    background: #315f9f;
+    color: #ffffff;
+}
+
+    .sr-button-primary:hover {
+        background: #274f88;
+        color: #ffffff;
+    }
+
+.sr-button-light {
+    border-color: #d8e4f2;
+    background: #ffffff;
+    color: #466d9f;
+}
+
+    .sr-button-light:hover {
+        background: #f4f8fe;
+        color: #315f9f;
+    }
+
+.sr-button:focus-visible {
+    outline: 3px solid #9dbceb;
+    outline-offset: 3px;
+}
+
+/* KONTROL ALANLARI VE DURUM LİSTESİ */
+
+.sr-categories,
+.sr-legend {
+    margin-top: 20px;
+}
+
+    .sr-categories > div,
+    .sr-legend > div {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 13px 0;
+        border-top: 1px solid #edf1f7;
+        color: #52647e;
+        font-size: 13px;
+    }
+
+.sr-dot {
+    flex: 0 0 9px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.sr-blue {
+    background: #7ba2e3;
+}
+
+.sr-purple {
+    background: #a38edb;
+}
+
+.sr-coral {
+    background: #e59483;
+}
+
+.sr-teal {
+    background: #70b9ae;
+}
+
+.sr-green {
+    background: #83bc97;
+}
+
+/* GÜNCEL DURUM */
+
+.sr-current {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 18px;
+    border: 1px solid #e4ebf8;
+    border-radius: 12px;
+    background: #f4f8ff;
+}
+
+    .sr-current span {
+        color: #7f90a7;
+        font-size: 12px;
+    }
+
+    .sr-current strong {
+        color: #3b5c8b;
+        font-size: 15px;
+        overflow-wrap: anywhere;
+    }
+
+/* BAŞVURU BİLGİLERİ */
+
+.sr-info {
+    margin: 18px 0 20px;
+}
+
+    .sr-info > div {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 12px 0;
+        border-bottom: 1px solid #edf1f7;
+    }
+
+    .sr-info dt {
+        color: #8491a3;
+        font-size: 13px;
+    }
+
+    .sr-info dd {
+        margin: 0;
+        color: #425570;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: right;
+        overflow-wrap: anywhere;
+    }
+
+/* DURUM AÇIKLAMALARI */
+
+.sr-legend > div {
+    align-items: flex-start;
+}
+
+.sr-legend .sr-dot {
+    margin-top: 5px;
+}
+
+.sr-legend p {
+    margin: 0;
+}
+
+.sr-legend strong,
+.sr-legend small {
+    display: block;
+}
+
+.sr-legend strong {
+    color: #425570;
+    font-size: 13px;
+}
+
+.sr-legend small {
+    margin-top: 4px;
+    color: #909caf;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+/* TELEFON VE KÜÇÜK EKRANLAR */
+
+@media (max-width: 760px) {
+    .sr-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sr-heading h1 {
+        font-size: 23px;
+    }
+
+    .sr-card {
+        padding: 18px;
+    }
+}

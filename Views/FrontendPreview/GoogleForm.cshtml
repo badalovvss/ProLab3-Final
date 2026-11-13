@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Google Form";
+    ViewData["AktifMenu"] = "GoogleForm";
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+}
+
+<div class="dashboard">
+
+    <div class="page-heading">
+
+        <div>
+
+            <p class="page-label">ÖĞRENCİ PANELİ</p>
+
+            <h1>Google Form</h1>
+
+            <p class="page-description">
+                Staj evrakı teslim formunun bağlantısı için ayrılan alan.
+            </p>
+
+        </div>
+
+        <span class="preview-badge">Final aşaması</span>
+
+    </div>
+
+
+    <section class="wide-card form-card">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>Form Bağlantısı</h2>
+
+                <p>
+                    Bu alanın gerçek kaydı ve form işlemleri final aşamasında
+                    backend ile bağlanacaktır.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form class="preview-form" method="post">
+
+            <div class="field">
+
+                <label for="googleFormUrl">
+                    Google Form URL
+                </label>
+
+                <input type="url"
+                       id="googleFormUrl"
+                       name="googleFormUrl"
+                       placeholder="https://..."
+                       required />
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button type="submit" class="primary-button">
+                    Bağlantıyı Kontrol Et
+                </button>
+
+            </div>
+
+            <p class="form-message"
+               role="status"
+               hidden></p>
+
+        </form>
+
+    </section>
+
+</div>

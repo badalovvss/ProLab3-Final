@@ -1,0 +1,132 @@
+﻿@using StajYönetimSistemi.Controllers
+@{
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+
+    bool tamamlananlar = (ViewData["AktifMenu"] as string) == "Tamamlananlar";
+    string baslik = tamamlananlar ? "Tamamlananlar" : "Başvurular";
+    string kaynak = tamamlananlar ? "tamamlananlar" : "basvurular";
+
+    ViewData["Title"] = baslik;
+
+    var basvurular = ViewBag.TumBasvurular as List<BasvuruViewModel>;
+}
+
+<link rel="stylesheet" href="@Url.Content("~/css/adminbasvuru.css")" />
+
+<div class="ab-page">
+
+    <div class="ab-page-heading">
+        <div>
+            <p class="ab-eyebrow">BAŞVURU YÖNETİMİ</p>
+            <h1>@baslik</h1>
+            <p class="ab-subtitle">
+                @(tamamlananlar
+                    ? "Tamamlanan başvuruları görüntüleyin."
+                    : "Öğrenci başvurularını ve durumlarını görüntüleyin.")
+            </p>
+        </div>
+    </div>
+
+    <section class="ab-card">
+        <div class="ab-card-heading ab-list-heading">
+            <div>
+                <h2>@baslik Listesi</h2>
+                <p>Başvuru bilgileri ve güncel durumlar.</p>
+            </div>
+            <!-- Tasarım bozulmasın diye tutulan etkisiz buton -->
+            <a class="ab-button ab-button-outline" href="#" onclick="alert('Lütfen tablodan bir öğrenci işlemi seçin.'); return false;">
+                Başvuru ayrıntıları
+            </a>
+        </div>
+
+        <div class="ab-table-wrap">
+            <table class="ab-table">
+                <thead>
+                    <tr>
+                        <th>Öğrenci</th>
+                        <th>Öğrenci No</th>
+                        <th>Belge</th>
+                        <th>Durum</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (basvurular != null && basvurular.Count > 0)
+                    {
+                        foreach (var basvuru in basvurular)
+                        {
+                            <tr>
+                                <td style="padding: 15px; font-weight: bold;">@basvuru.OgrenciAdSoyad</td>
+                                <td style="padding: 15px;">@basvuru.OgrenciNo</td>
+                                <td style="padding: 15px;">
+                                    <a href="@basvuru.DosyaYolu" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold; display: block;">📄 Ek-16 İndir/Gör</a>
+                                    <a href="@basvuru.GoogleFormUrl" target="_blank" style="font-size: 0.85em; color: #6c757d; text-decoration: none;">🔗 Google Form</a>
+                                </td>
+                                <td style="padding: 15px;">
+                                    @if (basvuru.Statu == "Onay Bekliyor")
+                                    {
+                                        <span style="background-color: #fff3cd; color: #856404; padding: 5px 10px; border-radius: 5px; font-weight: 500;">⏳ @basvuru.Statu</span>
+                                    }
+                                    else if (basvuru.Statu == "Onaylandı")
+                                    {
+                                        <span style="background-color: #d4edda; color: #155724; padding: 5px 10px; border-radius: 5px; font-weight: 500;">✅ @basvuru.Statu</span>
+                                    }
+                                    else
+                                    {
+                                        <span style="background-color: #f8d7da; color: #721c24; padding: 5px 10px; border-radius: 5px; font-weight: 500;">❌ @basvuru.Statu</span>
+                                    }
+                                </td>
+                                <td style="padding: 15px; min-width: 250px;">
+                                    @if (basvuru.Statu == "Onay Bekliyor")
+                                    {
+                                        <!-- ONAYLA BUTONU -->
+                                        <form asp-controller="Admin" asp-action="EvrakDurumGuncelle" method="post" style="display: inline-block; margin-right: 5px;">
+                                            <input type="hidden" name="evrakId" value="@basvuru.EvrakId" />
+                                            <input type="hidden" name="yeniDurum" value="Onaylandı" />
+                                            <button type="submit" style="background-color: #28a745; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">Onayla</button>
+                                        </form>
+
+                                        <!-- REDDET BUTONU -->
+                                        <form asp-controller="Admin" asp-action="EvrakDurumGuncelle" method="post" style="display: inline-block; margin-right: 5px;">
+                                            <input type="hidden" name="evrakId" value="@basvuru.EvrakId" />
+                                            <input type="hidden" name="yeniDurum" value="Reddedildi" />
+                                            <button type="submit" style="background-color: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">Reddet</button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <!-- VİZE KURALI EKLENDİ: ADMIN GÜNCELLEME YETKİSİ -->
+                                        <form asp-controller="Admin" asp-action="EvrakDurumGuncelle" method="post" style="display: inline-block; margin-right: 5px;">
+                                            <input type="hidden" name="evrakId" value="@basvuru.EvrakId" />
+                                            <input type="hidden" name="yeniDurum" value="Onay Bekliyor" />
+                                            <button type="submit" style="background-color: #ffc107; color: #212529; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;" title="Durumu Geri Al">Geri Al</button>
+                                        </form>
+
+                                        <!-- VİZE KURALI EKLENDİ: ADMIN SİLME YETKİSİ -->
+                                        <form asp-controller="Admin" asp-action="EvrakSil" method="post" style="display: inline-block; margin-right: 15px;" onsubmit="return confirm('Bu evrakı sistemden tamamen silmek istediğinize emin misiniz?');">
+                                            <input type="hidden" name="evrakId" value="@basvuru.EvrakId" />
+                                            <button type="submit" style="background-color: #343a40; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">Sil</button>
+                                        </form>
+                                    }
+
+                                    <!-- GERÇEK ÇALIŞAN AYRINTILAR BUTONU -->
+                                    <a class="ab-button ab-button-outline" style="padding: 5px 10px; font-size: 0.9em; text-decoration: none; background: transparent; border: 1px solid #007bff; color: #007bff; border-radius: 4px; display: inline-block; vertical-align: middle;" href="/Admin/AdminBasvuruDetay/@basvuru.EvrakId">
+                                        Ayrıntılar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="ab-empty" style="text-align: center; padding: 30px;">
+                                <strong>Henüz sisteme yüklenen bir başvuru bulunmuyor.</strong>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

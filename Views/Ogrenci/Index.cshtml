@@ -1,0 +1,141 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+    ViewData["AktifMenu"] = "AnaSayfa";
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+}
+
+<div class="dashboard">
+
+    <!-- SAYFA BAŞLIĞI -->
+    <div class="page-heading">
+
+        <div>
+
+            <p class="page-label">
+                ÖĞRENCİ PANELİ
+            </p>
+
+            <h1>
+                Hoş geldiniz
+            </h1>
+
+            <p class="page-description">
+                Staj başvurunuzun genel bilgilerini aşağıda
+                görüntüleyebilirsiniz.
+            </p>
+
+        </div>
+
+        <span class="preview-badge">
+            Arayüz önizlemesi
+        </span>
+
+    </div>
+
+
+    <!-- BAŞVURU ÖZETİ -->
+    <section class="wide-card summary-card">
+
+        <div class="summary-heading">
+
+            <span class="card-icon blue">
+
+                <svg aria-hidden="true">
+                    <use href="#icon-document"></use>
+                </svg>
+
+            </span>
+
+            <div>
+
+                <h2>
+                    Başvuru Özeti
+                </h2>
+
+                <p>
+                    Staj başvurunuza ait temel bilgiler.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-grid">
+
+            <!-- BELGE: MAVİ -->
+            <div class="summary-item">
+
+                <div class="summary-icon belge-renk">
+
+                    <svg aria-hidden="true">
+                        <use href="#icon-document"></use>
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <span>Belge</span>
+
+                    <strong>@(ViewBag.BelgeAdi ?? "—")</strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- BAŞVURU DURUMU: MERCAN -->
+            <div class="summary-item">
+
+                <div class="summary-icon durum-renk">
+
+                    <svg aria-hidden="true">
+                        <use href="#icon-check"></use>
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <span>Başvuru Durumu</span>
+
+                    <strong>@(ViewBag.BasvuruDurumu ?? "—")</strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- STAJ DÖNEMİ: MOR -->
+            <div class="summary-item">
+
+                <div class="summary-icon takvim-renk">
+
+                    <svg aria-hidden="true">
+                        <use href="#icon-calendar"></use>
+                    </svg>
+
+                </div>
+
+                <div>
+
+                    <span>Staj Dönemi</span>
+
+                    <strong>—</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <p class="summary-note">
+            Başvuru bilgileri backend bağlantısı yapıldığında
+            bu alanda görüntülenecektir.
+        </p>
+
+    </section>
+
+</div>

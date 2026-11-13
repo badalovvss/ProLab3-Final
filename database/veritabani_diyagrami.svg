@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="1410" viewBox="0 0 1580 1410">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L9 5L0 10" fill="none" stroke="#45677e" stroke-width="1.5"/></marker></defs>
+<rect width="1580" height="1410" fill="#f3f6fa"/>
+<text x="60" y="62" font-family="DejaVu Sans,sans-serif" font-size="34" font-weight="bold" fill="#182f43">PROLAB III · Vize veritabanı</text>
+<text x="60" y="102" font-family="DejaVu Sans,sans-serif" font-size="20" fill="#4e6376">MySQL · Ek-16 yükleme, öğrenci veri seti, giriş ve oturum kayıtları</text>
+<text x="60" y="135" font-family="DejaVu Sans,sans-serif" font-size="17" fill="#4e6376">PK: birincil anahtar   FK: yabancı anahtar   UQ: benzersiz   +: UNSIGNED   |   Alan adları SQL dosyasıyla aynıdır.</text>
+<path d="M660 300 H920" fill="none" stroke="#45677e" stroke-width="2.4" marker-end="url(#arrow)"/>
+<text x="790" y="280" text-anchor="middle" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#334f64">1 → 0..N · yükler</text>
+<path d="M360 817 V1000" fill="none" stroke="#45677e" stroke-width="2.4" marker-end="url(#arrow)"/>
+<text x="380" y="910" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="normal" fill="#334f64">1 → 0..N</text>
+<text x="380" y="938" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#334f64">giriş kaydı</text>
+<path d="M660 700 H780 V1160 H920" fill="none" stroke="#45677e" stroke-width="2.4" marker-end="url(#arrow)"/>
+<text x="840" y="925" text-anchor="middle" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="normal" fill="#334f64">1 → 0..N</text>
+<text x="840" y="950" text-anchor="middle" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#334f64">oturum</text>
+<path d="M1220 556 V660" fill="none" stroke="#45677e" stroke-width="2.4" marker-end="url(#arrow)" stroke-dasharray="7 5"/>
+<text x="1245" y="605" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="19" font-weight="normal" fill="#334f64">1 → 0..1</text>
+<text x="1245" y="632" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#334f64">vizede boş</text>
+<rect x="60" y="170" width="600" height="647" rx="12" fill="#ffffff" stroke="#b8c9d6" stroke-width="1.7"/>
+<path d="M72 170 H648 Q660 170 660 182 V225 H60 V182 Q60 170 72 170" fill="#203c52"/>
+<text x="82" y="205" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="22" font-weight="bold" fill="#ffffff">KULLANICI</text>
+<rect x="61" y="225" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="246" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">PK</text>
+<text x="140" y="246" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">kullanici_id</text>
+<text x="645" y="246" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">INT +</text>
+<text x="72" y="275" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">UQ</text>
+<text x="140" y="275" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">kullanici_adi</text>
+<text x="645" y="275" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(50)</text>
+<rect x="61" y="283" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="304" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="304" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">ad_soyad</text>
+<text x="645" y="304" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(150)</text>
+<text x="72" y="333" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">UQ</text>
+<text x="140" y="333" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">eposta</text>
+<text x="645" y="333" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(254)</text>
+<rect x="61" y="341" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="362" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="362" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">telefon_no</text>
+<text x="645" y="362" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(17)</text>
+<text x="72" y="391" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="391" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">sifre_hash</text>
+<text x="645" y="391" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(255)</text>
+<rect x="61" y="399" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="420" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="420" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">rol</text>
+<text x="645" y="420" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(20)</text>
+<text x="72" y="449" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">UQ</text>
+<text x="140" y="449" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">tc_kimlik</text>
+<text x="645" y="449" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(11)</text>
+<rect x="61" y="457" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="478" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="478" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">uyruk</text>
+<text x="645" y="478" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(80)</text>
+<text x="72" y="507" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">UQ</text>
+<text x="140" y="507" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">ogrenci_no</text>
+<text x="645" y="507" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(30)</text>
+<rect x="61" y="515" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="536" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="536" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">dogum_tarihi</text>
+<text x="645" y="536" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">DATE</text>
+<text x="72" y="565" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="565" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">ikametgah_adresi</text>
+<text x="645" y="565" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(500)</text>
+<rect x="61" y="573" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="594" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="594" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">bolum</text>
+<text x="645" y="594" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(150)</text>
+<text x="72" y="623" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="623" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">teslim_yili</text>
+<text x="645" y="623" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">CHAR(9)</text>
+<rect x="61" y="631" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="652" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="652" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">onceki_staj_gun_sayisi</text>
+<text x="645" y="652" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">SMALLINT +</text>
+<text x="72" y="681" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="681" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">saglik_yardimi_statusu</text>
+<text x="645" y="681" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(100)</text>
+<rect x="61" y="689" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="710" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="710" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">basarisiz_giris_sayisi</text>
+<text x="645" y="710" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">TINYINT +</text>
+<text x="72" y="739" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="739" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">kilitli</text>
+<text x="645" y="739" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">BOOLEAN</text>
+<rect x="61" y="747" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="768" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="768" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">aktif</text>
+<text x="645" y="768" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">BOOLEAN</text>
+<text x="72" y="797" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="797" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">olusturulma_tarihi</text>
+<text x="645" y="797" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">DATETIME(6)</text>
+<rect x="920" y="170" width="600" height="386" rx="12" fill="#ffffff" stroke="#b8c9d6" stroke-width="1.7"/>
+<path d="M932 170 H1508 Q1520 170 1520 182 V225 H920 V182 Q920 170 932 170" fill="#203c52"/>
+<text x="942" y="205" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="22" font-weight="bold" fill="#ffffff">EVRAK</text>
+<rect x="921" y="225" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="246" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">PK</text>
+<text x="1000" y="246" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">evrak_id</text>
+<text x="1505" y="246" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">INT +</text>
+<text x="932" y="275" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">FK</text>
+<text x="1000" y="275" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">kullanici_id</text>
+<text x="1505" y="275" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">INT +</text>
+<rect x="921" y="283" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="304" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">UQ</text>
+<text x="1000" y="304" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">dosya_yolu</text>
+<text x="1505" y="304" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(512)</text>
+<text x="932" y="333" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="333" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">format</text>
+<text x="1505" y="333" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(4)</text>
+<rect x="921" y="341" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="362" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="362" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">statu</text>
+<text x="1505" y="362" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(30)</text>
+<text x="932" y="391" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="391" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">yuklenme_tarihi</text>
+<text x="1505" y="391" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">DATETIME(6)</text>
+<rect x="921" y="399" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="420" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="420" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">google_form_url</text>
+<text x="1505" y="420" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(2048)</text>
+<text x="932" y="449" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="449" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">belge_turu</text>
+<text x="1505" y="449" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(5)</text>
+<rect x="921" y="457" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="478" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="478" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">dosya_adi</text>
+<text x="1505" y="478" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(255)</text>
+<text x="932" y="507" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="507" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">mime_turu</text>
+<text x="1505" y="507" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(100)</text>
+<rect x="921" y="515" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="536" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="536" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">dosya_boyutu</text>
+<text x="1505" y="536" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">BIGINT +</text>
+<rect x="920" y="660" width="600" height="212" rx="12" fill="#ffffff" stroke="#9aa8b4" stroke-width="1.7" stroke-dasharray="6 4"/>
+<path d="M932 660 H1508 Q1520 660 1520 672 V715 H920 V672 Q920 660 932 660" fill="#6c7c89"/>
+<text x="942" y="695" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="22" font-weight="bold" fill="#ffffff">RAPOR</text>
+<text x="1500" y="694" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="14" font-weight="normal" fill="#ffffff">YAPI VAR · İŞLEM KAPALI</text>
+<rect x="921" y="715" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="736" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">PK</text>
+<text x="1000" y="736" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">rapor_id</text>
+<text x="1505" y="736" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">INT +</text>
+<text x="932" y="765" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">FK·UQ</text>
+<text x="1000" y="765" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">evrak_id</text>
+<text x="1505" y="765" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">INT +</text>
+<rect x="921" y="773" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="794" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="794" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">eksik_alanlar</text>
+<text x="1505" y="794" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">TEXT</text>
+<text x="932" y="823" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="823" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">ocr_ham_veri</text>
+<text x="1505" y="823" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">LONGTEXT</text>
+<rect x="921" y="831" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="852" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="852" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">olusturulma_tarihi</text>
+<text x="1505" y="852" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">DATETIME(6)</text>
+<rect x="60" y="1000" width="600" height="241" rx="12" fill="#ffffff" stroke="#b8c9d6" stroke-width="1.7"/>
+<path d="M72 1000 H648 Q660 1000 660 1012 V1055 H60 V1012 Q60 1000 72 1000" fill="#203c52"/>
+<text x="82" y="1035" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="22" font-weight="bold" fill="#ffffff">GIRIS_DENEMESI</text>
+<rect x="61" y="1055" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="1076" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">PK</text>
+<text x="140" y="1076" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">deneme_id</text>
+<text x="645" y="1076" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">BIGINT +</text>
+<text x="72" y="1105" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">FK</text>
+<text x="140" y="1105" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">kullanici_id</text>
+<text x="645" y="1105" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">INT +</text>
+<rect x="61" y="1113" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="1134" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="1134" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">giris_bilgisi</text>
+<text x="645" y="1134" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(254)</text>
+<text x="72" y="1163" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="1163" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">sonuc</text>
+<text x="645" y="1163" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(15)</text>
+<rect x="61" y="1171" width="598" height="29" fill="#f2f7fa"/>
+<text x="72" y="1192" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="1192" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">ip_adresi</text>
+<text x="645" y="1192" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(45)</text>
+<text x="72" y="1221" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="140" y="1221" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">deneme_tarihi</text>
+<text x="645" y="1221" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">DATETIME(6)</text>
+<rect x="920" y="1000" width="600" height="270" rx="12" fill="#ffffff" stroke="#b8c9d6" stroke-width="1.7"/>
+<path d="M932 1000 H1508 Q1520 1000 1520 1012 V1055 H920 V1012 Q920 1000 932 1000" fill="#203c52"/>
+<text x="942" y="1035" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="22" font-weight="bold" fill="#ffffff">OTURUM</text>
+<rect x="921" y="1055" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="1076" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">PK</text>
+<text x="1000" y="1076" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">oturum_id</text>
+<text x="1505" y="1076" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">BIGINT +</text>
+<text x="932" y="1105" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">FK</text>
+<text x="1000" y="1105" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">kullanici_id</text>
+<text x="1505" y="1105" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">INT +</text>
+<rect x="921" y="1113" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="1134" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c">UQ</text>
+<text x="1000" y="1134" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">token_hash</text>
+<text x="1505" y="1134" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">CHAR(64)</text>
+<text x="932" y="1163" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="1163" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">rol</text>
+<text x="1505" y="1163" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">VARCHAR(20)</text>
+<rect x="921" y="1171" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="1192" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="1192" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">olusturulma_tarihi</text>
+<text x="1505" y="1192" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">DATETIME(6)</text>
+<text x="932" y="1221" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="1221" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">son_kullanma_tarihi</text>
+<text x="1505" y="1221" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">DATETIME(6)</text>
+<rect x="921" y="1229" width="598" height="29" fill="#f2f7fa"/>
+<text x="932" y="1250" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="12" font-weight="bold" fill="#19766c"></text>
+<text x="1000" y="1250" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#253f51">iptal_tarihi</text>
+<text x="1505" y="1250" text-anchor="end" font-family="DejaVu Sans,sans-serif" font-size="15" font-weight="normal" fill="#677d8e">DATETIME(6)</text>
+<text x="60" y="1339" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="18" font-weight="bold" fill="#215d65">Vize sınırı: EVRAK.statu = “Yüklendi”   ·   google_form_url = NULL   ·   RAPOR kaydı oluşturulamaz.</text>
+<text x="60" y="1377" text-anchor="start" font-family="DejaVu Sans,sans-serif" font-size="17" font-weight="normal" fill="#334f64">Giriş denemesinde kullanıcı bilinmiyorsa FK NULL olabilir. OCR, Google Form ve Ek-17 işlevleri uygulanmamıştır.</text>
+</svg>

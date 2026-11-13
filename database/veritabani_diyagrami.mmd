@@ -1,0 +1,64 @@
+erDiagram
+    KULLANICI ||--o{ EVRAK : yukler
+    EVRAK ||--o| RAPOR : "vizede bos"
+    KULLANICI |o--o{ GIRIS_DENEMESI : loglanir
+    KULLANICI ||--o{ OTURUM : acar
+    KULLANICI {
+        INT kullanici_id PK
+        VARCHAR(50) kullanici_adi
+        VARCHAR(150) ad_soyad
+        VARCHAR(254) eposta
+        VARCHAR(17) telefon_no
+        VARCHAR(255) sifre_hash
+        VARCHAR(20) rol
+        VARCHAR(11) tc_kimlik
+        VARCHAR(80) uyruk
+        VARCHAR(30) ogrenci_no
+        DATE dogum_tarihi
+        VARCHAR(500) ikametgah_adresi
+        VARCHAR(150) bolum
+        CHAR(9) teslim_yili
+        SMALLINT onceki_staj_gun_sayisi
+        VARCHAR(100) saglik_yardimi_statusu
+        TINYINT basarisiz_giris_sayisi
+        BOOLEAN kilitli
+        BOOLEAN aktif
+        DATETIME(6) olusturulma_tarihi
+    }
+    EVRAK {
+        INT evrak_id PK
+        INT kullanici_id FK
+        VARCHAR(512) dosya_yolu
+        VARCHAR(4) format
+        VARCHAR(30) statu
+        DATETIME(6) yuklenme_tarihi
+        VARCHAR(2048) google_form_url
+        VARCHAR(5) belge_turu
+        VARCHAR(255) dosya_adi
+        VARCHAR(100) mime_turu
+        BIGINT dosya_boyutu
+    }
+    RAPOR {
+        INT rapor_id PK
+        INT evrak_id FK
+        TEXT eksik_alanlar
+        LONGTEXT ocr_ham_veri
+        DATETIME(6) olusturulma_tarihi
+    }
+    GIRIS_DENEMESI {
+        BIGINT deneme_id PK
+        INT kullanici_id FK
+        VARCHAR(254) giris_bilgisi
+        VARCHAR(15) sonuc
+        VARCHAR(45) ip_adresi
+        DATETIME(6) deneme_tarihi
+    }
+    OTURUM {
+        BIGINT oturum_id PK
+        INT kullanici_id FK
+        CHAR(64) token_hash
+        VARCHAR(20) rol
+        DATETIME(6) olusturulma_tarihi
+        DATETIME(6) son_kullanma_tarihi
+        DATETIME(6) iptal_tarihi
+    }

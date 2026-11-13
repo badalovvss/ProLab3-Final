@@ -1,0 +1,306 @@
+﻿/* =========================================
+   ÜST BAŞLIK BAĞLANTILARI
+========================================= */
+
+.header-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #344969;
+    text-decoration: none;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+    .header-action:hover {
+        color: #2459aa;
+    }
+
+    .header-action:focus-visible {
+        outline: 2px solid #83a9e4;
+        outline-offset: 4px;
+        border-radius: 3px;
+    }
+
+    .header-action svg {
+        width: 19px;
+        height: 19px;
+    }
+
+.header-divider {
+    width: 1px;
+    height: 20px;
+    background: #dce4ef;
+}
+
+
+/* =========================================
+   ÖĞRENCİ AÇILIR MENÜSÜ
+========================================= */
+
+.user-dropdown {
+    position: relative;
+}
+
+.user-summary {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    list-style: none;
+    color: #344969;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+    .user-summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .user-summary:focus-visible {
+        outline: 2px solid #83a9e4;
+        outline-offset: 4px;
+        border-radius: 4px;
+    }
+
+.user-name {
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-chevron {
+    width: 16px;
+    height: 16px;
+}
+
+.user-dropdown[open] .user-chevron {
+    transform: rotate(180deg);
+}
+
+.user-dropdown-content {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    z-index: 10;
+    width: 230px;
+    padding: 8px;
+    border: 1px solid #e0e8f2;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(35, 55, 85, 0.14);
+}
+
+.user-dropdown-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px;
+    border-bottom: 1px solid #edf1f6;
+}
+
+    .user-dropdown-heading strong {
+        color: #213a5f;
+        font-size: 13px;
+    }
+
+    .user-dropdown-heading span {
+        color: #91a0b2;
+        font-size: 11px;
+    }
+
+.user-dropdown-link {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 7px;
+    color: #536985;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+    .user-dropdown-link:hover {
+        background: #f1f6fd;
+        color: #2459aa;
+    }
+
+    .user-dropdown-link:focus-visible {
+        outline: 2px solid #83a9e4;
+        outline-offset: -2px;
+    }
+
+    .user-dropdown-link svg {
+        width: 18px;
+        height: 18px;
+    }
+
+
+/* =========================================
+   YARDIM SAYFASI
+========================================= */
+
+.bilgi-metni {
+    margin: 0;
+    color: #60738e;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   İLETİŞİM SAYFASI
+========================================= */
+
+.iletisim-alan {
+    margin-bottom: 18px;
+}
+
+    .iletisim-alan label {
+        display: block;
+        margin-bottom: 8px;
+        color: #344b6d;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .iletisim-alan input,
+    .iletisim-alan textarea {
+        width: 100%;
+        padding: 11px 12px;
+        border: 1px solid #d8e3f0;
+        border-radius: 7px;
+        background: #ffffff;
+        color: #405675;
+        font: inherit;
+        font-size: 13px;
+    }
+
+    .iletisim-alan textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+        .iletisim-alan input:focus,
+        .iletisim-alan textarea:focus {
+            outline: none;
+            border-color: #7199d9;
+            box-shadow: 0 0 0 3px rgba(80, 125, 195, 0.12);
+        }
+
+        .iletisim-alan input::placeholder,
+        .iletisim-alan textarea::placeholder {
+            color: #9aa9bb;
+        }
+
+
+/* =========================================
+   PROFİL SAYFASI
+========================================= */
+
+.profil-baslik {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.profil-simge {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #e8f0fd;
+    color: #315fa9;
+}
+
+    .profil-simge svg {
+        width: 25px;
+        height: 25px;
+    }
+
+.profil-baslik h2 {
+    margin: 0 0 6px;
+    color: #142748;
+    font-size: 17px;
+}
+
+.profil-baslik p {
+    margin: 0;
+    color: #8796aa;
+    font-size: 12px;
+}
+
+.profil-bilgileri {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.profil-alani {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid #e6edf5;
+    border-radius: 8px;
+    background: #f8fbff;
+}
+
+    .profil-alani span {
+        color: #8190a6;
+        font-size: 12px;
+    }
+
+    .profil-alani strong {
+        color: #344b6d;
+        font-size: 14px;
+        overflow-wrap: anywhere;
+    }
+
+
+/* =========================================
+   TELEFON VE DAR EKRANLAR
+========================================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        flex-wrap: wrap;
+    }
+
+    .topbar-title {
+        flex: 1 1 100%;
+    }
+
+    .topbar-right {
+        width: 100%;
+        justify-content: flex-end;
+        gap: 11px;
+    }
+
+    .header-action {
+        font-size: 12px;
+    }
+
+        .header-action svg {
+            width: 17px;
+            height: 17px;
+        }
+
+    .header-divider {
+        height: 17px;
+    }
+
+    .user-name {
+        max-width: 100px;
+    }
+
+    .profil-bilgileri {
+        grid-template-columns: 1fr;
+    }
+}

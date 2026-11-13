@@ -1,0 +1,592 @@
+﻿@{
+    ViewData["Title"] = "Giriş Yap";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Giriş Yap | Staj Evrak Doğrulama ve Yönetim Sistemi</title>
+    <link rel="stylesheet" href="/css/login.css" />
+    <style>
+            .ust-baglanti, .sifre-baglanti {
+                padding: 0;
+                border: 0;
+                background: transparent;
+                font: inherit;
+                cursor: pointer;
+            }
+
+            .ust-baglanti {
+                color: inherit;
+            }
+
+                .ust-baglanti:hover {
+                    color: #2451a6;
+                }
+
+            .sifre-baglanti {
+                color: #2451a6;
+                text-decoration: underline;
+            }
+
+                .ust-baglanti:focus-visible, .sifre-baglanti:focus-visible {
+                    outline: 2px solid #83a9e4;
+                    outline-offset: 4px;
+                    border-radius: 3px;
+                }
+
+            .giris-pencere {
+                width: min(92vw, 520px);
+                max-height: calc(100vh - 40px);
+                padding: 0;
+                overflow-y: auto;
+                border: 1px solid #dce5f0;
+                border-radius: 12px;
+                background: #ffffff;
+                color: #101f3d;
+                box-shadow: 0 18px 50px rgba(20, 40, 75, 0.20);
+            }
+
+                .giris-pencere::backdrop {
+                    background: rgba(16, 31, 61, 0.45);
+                }
+
+            .pencere-ust {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 15px;
+                padding: 20px 24px;
+                border-bottom: 1px solid #e8eef5;
+            }
+
+                .pencere-ust h2 {
+                    margin: 0;
+                    color: #142747;
+                    font-size: 20px;
+                }
+
+            .pencere-kapat {
+                width: 32px;
+                height: 32px;
+                flex: 0 0 32px;
+                display: grid;
+                place-items: center;
+                padding: 0;
+                border: 0;
+                border-radius: 6px;
+                background: #f2f6fb;
+                color: #5b6d86;
+                font-size: 23px;
+                line-height: 1;
+                cursor: pointer;
+            }
+
+                .pencere-kapat:hover {
+                    background: #e6eef8;
+                }
+
+            .pencere-icerik {
+                padding: 22px 24px 24px;
+            }
+
+            .pencere-aciklama {
+                margin: 0 0 20px;
+                color: #697b94;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .yardim-bolum {
+                padding: 14px 0;
+                border-top: 1px solid #edf1f6;
+            }
+
+            .yardim-link {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                color: #263d5e;
+                font-size: 14px;
+                font-weight: 700;
+                text-decoration: none;
+            }
+
+                .yardim-link:hover {
+                    color: #2451a6;
+                }
+
+                .yardim-link span {
+                    color: #6484b4;
+                    font-size: 12px;
+                    white-space: nowrap;
+                }
+
+            .yardim-bolum p {
+                margin: 7px 0 0;
+                color: #71819a;
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            .pencere-alan {
+                margin-bottom: 16px;
+            }
+
+                .pencere-alan label {
+                    display: block;
+                    margin-bottom: 8px;
+                    color: #344b6d;
+                    font-size: 13px;
+                    font-weight: 700;
+                }
+
+                .pencere-alan input, .pencere-alan textarea {
+                    width: 100%;
+                    padding: 11px 12px;
+                    border: 1px solid #cbd6e4;
+                    border-radius: 7px;
+                    background: #ffffff;
+                    color: #1c3154;
+                    font: inherit;
+                    font-size: 14px;
+                }
+
+                .pencere-alan textarea {
+                    min-height: 110px;
+                    resize: vertical;
+                }
+
+                    .pencere-alan input:focus, .pencere-alan textarea:focus {
+                        outline: none;
+                        border-color: #527ed2;
+                        box-shadow: 0 0 0 3px rgba(74, 117, 200, 0.13);
+                    }
+
+            .pencere-dugme {
+                width: 100%;
+                min-height: 48px;
+                padding: 11px;
+                border: 0;
+                border-radius: 7px;
+                background: #254578;
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+
+                .pencere-dugme:hover {
+                    background: #1b3763;
+                }
+
+            .pencere-mesaj {
+                margin: 15px 0 0;
+                padding: 12px;
+                border: 1px solid #dce8f7;
+                border-radius: 7px;
+                background: #f4f8fe;
+                color: #536d93;
+                font-size: 13px;
+                line-height: 1.5;
+            }
+
+            /* --- YENİ MODERN FORM TASARIMI CSS --- */
+            .modern-login-wrapper {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            }
+
+            .modern-header h2 {
+                font-size: 32px;
+                font-weight: 700;
+                color: #111827;
+                margin-bottom: 10px;
+                letter-spacing: -0.5px;
+            }
+
+            .modern-header p {
+                color: #6b7280;
+                font-size: 15px;
+                margin-bottom: 35px;
+                line-height: 1.5;
+            }
+
+            .modern-form-group {
+                margin-bottom: 22px;
+                position: relative;
+            }
+
+                .modern-form-group label {
+                    display: block;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #374151;
+                    margin-bottom: 8px;
+                }
+
+            .modern-input-wrapper {
+                position: relative;
+                display: flex;
+                align-items: center;
+            }
+
+                .modern-input-wrapper span.icon {
+                    position: absolute;
+                    left: 15px;
+                    color: #9ca3af;
+                    font-size: 18px;
+                    pointer-events: none;
+                }
+
+            .modern-input {
+                width: 100%;
+                padding: 14px 45px 14px 45px; /* İkonlar için sol ve sağ boşluk */
+                border: 1px solid #d1d5db;
+                border-radius: 10px;
+                font-size: 15px;
+                color: #111827;
+                background-color: #f9fafb;
+                transition: all 0.2s ease;
+                box-sizing: border-box;
+            }
+
+                .modern-input:focus {
+                    border-color: #3b82f6;
+                    background-color: #ffffff;
+                    outline: none;
+                    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); /* Pürüzsüz mavi halka */
+                }
+
+            .modern-password-toggle {
+                position: absolute;
+                right: 12px;
+                background: transparent;
+                border: none;
+                color: #9ca3af;
+                cursor: pointer;
+                padding: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: color 0.2s;
+            }
+
+                .modern-password-toggle svg {
+                    width: 20px;
+                    height: 20px;
+                    fill: none;
+                    stroke: currentColor;
+                    stroke-width: 2;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                }
+
+                .modern-password-toggle:hover {
+                    color: #374151;
+                }
+
+            .modern-options {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 25px;
+                font-size: 14px;
+            }
+
+            .modern-forgot {
+                color: #3b82f6;
+                background: none;
+                border: none;
+                padding: 0;
+                font-size: 14px;
+                font-weight: 600;
+                text-decoration: none;
+                cursor: pointer;
+                transition: color 0.2s ease;
+            }
+
+                .modern-forgot:hover {
+                    color: #2563eb;
+                    text-decoration: underline;
+                }
+
+            .modern-btn-primary {
+                width: 100%;
+                background-color: #1e3a8a; /* Görseldeki lacivert tonu */
+                color: white;
+                padding: 14px;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+            }
+
+                .modern-btn-primary:hover {
+                    background-color: #172a6b;
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.15);
+                }
+
+            .modern-divider {
+                display: flex;
+                align-items: center;
+                text-align: center;
+                margin: 35px 0;
+                color: #6b7280;
+                font-size: 14px;
+            }
+
+                .modern-divider::before, .modern-divider::after {
+                    content: '';
+                    flex: 1;
+                    border-bottom: 1px solid #e5e7eb;
+                }
+
+                .modern-divider::before {
+                    margin-right: 15px;
+                }
+
+                .modern-divider::after {
+                    margin-left: 15px;
+                }
+
+            .modern-btn-outline {
+                display: block;
+                width: 100%;
+                text-align: center;
+                background-color: transparent;
+                border: 2px solid #3b82f6;
+                color: #3b82f6;
+                padding: 12px;
+                border-radius: 10px;
+                font-size: 15px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                box-sizing: border-box;
+            }
+
+                .modern-btn-outline:hover {
+                    background-color: #3b82f6;
+                    color: white;
+                    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+                }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- ÜST BAŞLIK -->
+        <header class="header">
+            <div class="header-inner">
+                <div class="brand">Staj Evrak Doğrulama ve Yönetim Sistemi</div>
+                <div class="header-links">
+                    <span><button type="button" class="ust-baglanti" data-pencere-ac="yardimPenceresi">Yardım</button></span>
+                    <span><button type="button" class="ust-baglanti" data-pencere-ac="iletisimPenceresi">İletişim</button></span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <!-- SOL TARAF (Mevcut Tasarım) -->
+            <section class="information">
+                <div class="information-inner">
+                    <div class="accent" aria-hidden="true"></div>
+                    <h1>Staj Evrak Yönetim Sistemi</h1>
+                    <p class="intro">Staj evraklarınızı yükleyebilir, kontrol sonuçlarını görüntüleyebilir ve başvuru durumunuzu takip edebilirsiniz.</p>
+                    <div class="illustration" aria-hidden="true">
+                        <div class="document-stack">
+                            <div class="paper paper-back"></div>
+                            <div class="paper paper-middle"></div>
+                            <div class="paper paper-front">
+                                <div class="paper-heading">
+                                    <span class="paper-icon">▤</span>
+                                    <span class="paper-heading-lines"><i></i><i></i></span>
+                                </div>
+                                <div class="paper-lines"><i></i><i></i><i></i><i></i></div>
+                                <svg class="signature" viewBox="0 0 120 40" fill="none">
+                                    <path d="M3 34C26 20 36 4 38 8c3 5-11 19-7 21 5 2 19-15 22-14 3 2-7 11-4 13 4 3 17-7 20-6 4 1-3 6 0 7 6 3 14-3 24-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M66 34h47" stroke="currentColor" stroke-width="2" opacity=".4" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="qualities">
+                            <div class="quality"><span class="quality-icon">▤</span><span><strong>Düzenli</strong><i></i><i></i></span></div>
+                            <div class="quality"><span class="quality-icon">✓</span><span><strong>Güvenli</strong><i></i><i></i></span></div>
+                            <div class="quality"><span class="quality-icon">□</span><span><strong>Erişilebilir</strong><i></i><i></i></span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SAĞ TARAF: YENİ MODERN GİRİŞ -->
+            <section class="login">
+                <div class="login-inner" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+
+                    <div class="modern-login-wrapper">
+                        <div class="modern-header">
+                            <h2>Sisteme giriş yapın</h2>
+                            <p>Staj evraklarınızı görüntülemek ve yönetmek için hesabınızla oturum açın.</p>
+                        </div>
+
+                        <!-- HATA MESAJI -->
+                        @if (ViewBag.Hata != null)
+                        {
+                            <div style="background-color: #fee2e2; color: #991b1b; padding: 12px; border-radius: 8px; font-size: 14px; margin-bottom: 20px; border-left: 4px solid #ef4444; font-weight: 600;" role="alert">
+                                @ViewBag.Hata
+                            </div>
+                        }
+
+                        <form id="loginForm" asp-controller="Auth" asp-action="Login" method="post" autocomplete="off">
+
+                            <div class="modern-form-group">
+                                <label for="giris-bilgisi">Kullanıcı adı veya e-posta</label>
+                                <div class="modern-input-wrapper">
+                                    <span class="icon">👤</span>
+                                    <input id="giris-bilgisi" name="eposta" type="text" class="modern-input" value="@ViewBag.GirilenEposta" autocomplete="off" placeholder="Kullanıcı adı veya e-posta" required />
+                                </div>
+                            </div>
+
+                            <div class="modern-form-group">
+                                <label for="sifre">Şifre</label>
+                                <div class="modern-input-wrapper">
+                                    <span class="icon">🔒</span>
+                                    <input id="sifre" name="sifre" type="password" class="modern-input" autocomplete="new-password" placeholder="Şifrenizi girin" required />
+                                    <button class="modern-password-toggle" id="sifreGoster" type="button" aria-label="Şifreyi göster" aria-pressed="false">
+                                        <svg viewBox="0 0 24 24"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z" /><circle cx="12" cy="12" r="3" /></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="modern-options">
+                                <label style="display: flex; align-items: center; gap: 8px; font-weight: normal; margin: 0; cursor: pointer;">
+                                    <input type="checkbox" name="rememberMe" style="width: 16px; height: 16px; accent-color: #3b82f6; cursor: pointer;"> Beni hatırla
+                                </label>
+                                <button type="button" class="modern-forgot" data-pencere-ac="sifrePenceresi">Şifremi unuttum?</button>
+                            </div>
+
+                            <button type="submit" class="modern-btn-primary">
+                                Giriş Yap <span aria-hidden="true">&rarr;</span>
+                            </button>
+
+                        </form>
+
+                        <div class="modern-divider">
+                            Henüz sistemde kaydınız yok mu?
+                        </div>
+
+                        <a asp-controller="Auth" asp-action="Register" class="modern-btn-outline">
+                            Yeni Hesap Oluştur
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        <footer class="footer"><span>© 2026 Staj Evrak Yönetim Sistemi</span></footer>
+    </div>
+
+    <!-- PENCERELER (Yardım, İletişim, Şifre) -->
+    <dialog class="giris-pencere" id="yardimPenceresi" aria-labelledby="yardimBaslik">
+        <div class="pencere-ust">
+            <h2 id="yardimBaslik">Yardım</h2>
+            <button type="button" class="pencere-kapat" data-pencere-kapat aria-label="Yardım penceresini kapat">×</button>
+        </div>
+        <div class="pencere-icerik">
+            <p class="pencere-aciklama">Daha ayrıntılı bilgi almak için bir konu seçin.</p>
+            <div class="yardim-bolum"><a class="yardim-link" href="#">Ek-16 belgesi<span>İncele →</span></a><p>Belge seçimi ve desteklenen dosya türleri.</p></div>
+            <div class="yardim-bolum"><a class="yardim-link" href="#">Staj bilgileri<span>İncele →</span></a><p>Staj tarihleri ve haftalık günlerin seçimi.</p></div>
+            <div class="yardim-bolum"><a class="yardim-link" href="#">Kontrol ve başvuru durumu<span>İncele →</span></a><p>Belgenin işlem aşamaları hakkında bilgi.</p></div>
+            <div class="yardim-bolum"><a class="yardim-link" href="#">Giriş ve şifre<span>İncele →</span></a><p>Giriş ve şifre sıfırlama alanı hakkında bilgi.</p></div>
+        </div>
+    </dialog>
+
+    <dialog class="giris-pencere" id="iletisimPenceresi" aria-labelledby="iletisimBaslik">
+        <div class="pencere-ust">
+            <h2 id="iletisimBaslik">İletişim</h2>
+            <button type="button" class="pencere-kapat" data-pencere-kapat aria-label="İletişim penceresini kapat">×</button>
+        </div>
+        <div class="pencere-icerik">
+            <p class="pencere-aciklama">İletişim alanının önizlemesi. Gerçek mesaj gönderme işlemi henüz sisteme bağlı değildir.</p>
+            <form class="pencere-form" method="post">
+                <div class="pencere-alan"><label for="iletisimAdSoyad">Ad Soyad</label><input type="text" id="iletisimAdSoyad" name="adSoyad" placeholder="Adınızı ve soyadınızı girin" required /></div>
+                <div class="pencere-alan"><label for="iletisimEposta">E-posta</label><input type="email" id="iletisimEposta" name="eposta" placeholder="E-posta adresinizi girin" required /></div>
+                <div class="pencere-alan"><label for="iletisimMesaj">Mesajınız</label><textarea id="iletisimMesaj" name="mesaj" rows="4" placeholder="Mesajınızı yazın" required></textarea></div>
+                <button type="submit" class="pencere-dugme">Mesajı Kontrol Et</button>
+                <p class="pencere-mesaj" role="status" hidden></p>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog class="giris-pencere" id="sifrePenceresi" aria-labelledby="sifrePencereBaslik">
+        <div class="pencere-ust">
+            <h2 id="sifrePencereBaslik">Şifremi Unuttum</h2>
+            <button type="button" class="pencere-kapat" data-pencere-kapat aria-label="Şifre penceresini kapat">×</button>
+        </div>
+        <div class="pencere-icerik">
+            <p class="pencere-aciklama">Şifre sıfırlama alanının önizlemesi. Gerçek e-posta gönderimi henüz sisteme bağlı değildir.</p>
+            <form class="pencere-form" method="post">
+                <div class="pencere-alan"><label for="sifirlamaEposta">E-posta</label><input type="email" id="sifirlamaEposta" name="eposta" placeholder="E-posta adresinizi girin" autocomplete="email" required /></div>
+                <button type="submit" class="pencere-dugme">Sıfırlama İsteğini Kontrol Et</button>
+                <p class="pencere-mesaj" role="status" hidden></p>
+            </form>
+        </div>
+    </dialog>
+
+    <script>
+            // Şifreyi göster / gizle (Yeni tasarımla tam uyumlu)
+            const sifreAlani = document.getElementById("sifre");
+            const sifreGosterButonu = document.getElementById("sifreGoster");
+            sifreGosterButonu.addEventListener("click", function () {
+                const sifreGizliMi = sifreAlani.type === "password";
+                sifreAlani.type = sifreGizliMi ? "text" : "password";
+                sifreGosterButonu.setAttribute("aria-label", sifreGizliMi ? "Şifreyi gizle" : "Şifreyi göster");
+                sifreGosterButonu.setAttribute("aria-pressed", String(sifreGizliMi));
+            });
+
+            // Pencereleri aç / kapat
+            document.querySelectorAll("[data-pencere-ac]").forEach(function (dugme) {
+                dugme.addEventListener("click", function () {
+                    const pencereId = dugme.getAttribute("data-pencere-ac");
+                    const pencere = document.getElementById(pencereId);
+                    if (pencere) { pencere.showModal(); }
+                });
+            });
+            document.querySelectorAll("[data-pencere-kapat]").forEach(function (dugme) {
+                dugme.addEventListener("click", function () {
+                    const pencere = dugme.closest("dialog");
+                    if (pencere) { pencere.close(); }
+                });
+            });
+
+            // İletişim ve şifre formları şimdilik önizlemedir (Giriş formu hariç!)
+            document.querySelectorAll(".pencere-form").forEach(function (form) {
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    const mesaj = form.querySelector(".pencere-mesaj");
+                    mesaj.hidden = false;
+                    mesaj.textContent = "Bu ekran önizlemedir. İsteğiniz henüz gönderilmedi.";
+                });
+            });
+
+            const adresBilgisi = new URLSearchParams(window.location.search);
+            if (adresBilgisi.get("yardim") === "ac") {
+                const yardimPenceresi = document.getElementById("yardimPenceresi");
+                if (yardimPenceresi) { yardimPenceresi.showModal(); }
+            }
+    </script>
+</body>
+</html>

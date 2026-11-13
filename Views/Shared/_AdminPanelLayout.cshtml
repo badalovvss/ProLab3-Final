@@ -1,0 +1,115 @@
+﻿@{
+    var aktifMenu =
+        ViewData["AktifMenu"]?.ToString() ?? "";
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] | Staj Evrak Yönetimi</title>
+    <!-- Öğrenci paneliyle ortak tema -->
+    <link rel="stylesheet" href="/css/panel.css" />
+    <!-- Yönetici paneline özel stiller -->
+    <link rel="stylesheet" href="/css/admin-panel.css" />
+</head>
+<body>
+
+    <!-- YÖNETİCİ PANELİ SİMGELERİ -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" aria-hidden="true">
+        <symbol id="admin-home" viewBox="0 0 24 24">
+            <path d="M3 10.5 12 3l9 7.5" />
+            <path d="M5.5 9.5V21h13V9.5" />
+            <path d="M9.5 21v-7h5v7" />
+        </symbol>
+        <symbol id="admin-upload" viewBox="0 0 24 24">
+            <path d="M12 16V4" />
+            <path d="m8 8 4-4 4 4" />
+            <path d="M5 16v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3" />
+        </symbol>
+        <symbol id="admin-document" viewBox="0 0 24 24">
+            <path d="M6 3h8l4 4v14H6z" />
+            <path d="M14 3v5h4" />
+            <path d="M9 12h6M9 16h6" />
+        </symbol>
+        <symbol id="admin-check" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" />
+            <path d="m8 12 2.5 2.5L16 9" />
+        </symbol>
+        <symbol id="admin-user" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M5 20v-1a7 7 0 0 1 14 0v1" />
+        </symbol>
+        <symbol id="admin-exit" viewBox="0 0 24 24">
+            <path d="M10 4H5v16h5" />
+            <path d="M13 8l4 4-4 4" />
+            <path d="M8 12h9" />
+        </symbol>
+    </svg>
+
+    <div class="app">
+        <!-- ÜST BAŞLIK -->
+        <header class="topbar">
+            <div class="topbar-title">Staj Evrak Doğrulama ve Yönetim Sistemi</div>
+            <div class="topbar-right">
+                <a class="admin-top-link" href="/Auth/Logout">Giriş ekranına dön</a>
+                <!-- YÖNETİCİ PROFİL BAĞLANTISI -->
+                
+                <a class="user-info" href="/Admin/AdminProfil" style="text-decoration: none; color: inherit;" aria-label="Yönetici profilini aç">
+                    <span class="user-icon">
+                        <svg aria-hidden="true"><use href="#admin-user"></use></svg>
+                    </span>
+                    <span>Admin</span>
+                </a>
+            </div>
+        </header>
+
+        <div class="app-body">
+            <!-- YÖNETİCİ SOL MENÜ -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav" aria-label="Admin menüsü">
+
+                    <a href="/Admin/Index" class="sidebar-link @(aktifMenu == "AnaSayfa" ? "active" : "")">
+                        <svg aria-hidden="true"><use href="#admin-home"></use></svg>
+                        <span>Ana Sayfa</span>
+                    </a>
+
+                    <a href="/Admin/VeriSeti" class="sidebar-link @(aktifMenu == "VeriSeti" ? "active" : "")">
+                        <svg aria-hidden="true"><use href="#admin-upload"></use></svg>
+                        <span>Veri Seti Yükle</span>
+                    </a>
+
+                    <!-- BAŞVURULAR (DÜZELTİLEN GERÇEK LİNK BURASI) -->
+                    <a href="/Admin/AdminListe" class="sidebar-link @(aktifMenu == "Basvurular" ? "active" : "")">
+                        <svg aria-hidden="true"><use href="#admin-document"></use></svg>
+                        <span>Başvurular</span>
+                    </a>
+
+                    <!-- Tamamlananlar menüsü artık kendi metoduna gidiyor -->
+                    <a href="/Admin/Tamamlananlar" class="sidebar-link @(aktifMenu == "Tamamlananlar" ? "active" : "")">
+                        <svg aria-hidden="true"><use href="#admin-check"></use></svg>
+                        <span>Tamamlananlar</span>
+                    </a>
+
+                </nav>
+
+                <div class="sidebar-bottom">
+                    <!-- Gerçek çıkış yapma metoduna yönlendirildi -->
+                    <a href="/Auth/Logout" class="sidebar-link">
+                        <svg aria-hidden="true"><use href="#admin-exit"></use></svg>
+                        <span>Giriş Ekranına Dön</span>
+                    </a>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="panel-footer">
+            © 2026 Staj Evrak Yönetim Sistemi
+        </footer>
+    </div>
+</body>
+</html>

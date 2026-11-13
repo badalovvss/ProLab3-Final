@@ -1,0 +1,151 @@
+﻿/* =========================================
+   ADMİN ÜST BAŞLIK BAĞLANTISI
+========================================= */
+
+.admin-top-link {
+    color: #526b90;
+    font-size: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+    .admin-top-link:hover {
+        color: #2459aa;
+        text-decoration: underline;
+    }
+
+
+/* =========================================
+   ADMİN BAĞLANTI DÜĞMESİ
+========================================= */
+
+.admin-link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 16px;
+    border: 1px solid #cbdcf3;
+    border-radius: 7px;
+    background: #f1f6fe;
+    color: #2a579b;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+    .admin-link-button:hover {
+        background: #e7f0fd;
+    }
+
+
+/* =========================================
+   VERİ SETİ FORMU
+========================================= */
+
+.admin-form-card {
+    max-width: 1000px;
+}
+
+.admin-file-field {
+    margin-top: 20px;
+}
+
+    .admin-file-field label {
+        display: block;
+        margin-bottom: 8px;
+        color: #344b6d;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .admin-file-field input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #d8e3f0;
+        border-radius: 7px;
+        background: #ffffff;
+        color: #405675;
+        font-size: 13px;
+    }
+
+        .admin-file-field input:focus-visible {
+            outline: 3px solid #9dbdf0;
+            outline-offset: 2px;
+        }
+
+.admin-submit {
+    width: auto;
+    min-width: 190px;
+    margin-top: 18px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.admin-result {
+    margin: 16px 0 0;
+    padding: 13px 14px;
+    border: 1px solid #dce8f7;
+    border-radius: 7px;
+    background: #f4f8fe;
+    color: #536d93;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   ÖRNEK VERİ ALANLARI
+========================================= */
+
+.admin-field-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+    .admin-field-list span {
+        padding: 11px 12px;
+        border: 1px solid #e7eef7;
+        border-radius: 7px;
+        background: #f8fbff;
+        color: #617593;
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+
+/* =========================================
+   TELEFON
+========================================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        flex-wrap: wrap;
+    }
+
+    .topbar-title {
+        flex: 1 1 100%;
+    }
+
+    .topbar-right {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .admin-field-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-submit {
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .admin-field-list {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,138 @@
+﻿@{
+    Layout = null; // Giriş/Kayıt ekranlarında genelde panel layout'u kullanılmaz
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kayıt Ol - Staj Yönetim Sistemi</title>
+    <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f4f7f6;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .auth-container {
+                background: #fff;
+                padding: 40px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                width: 100%;
+                max-width: 400px;
+            }
+
+                .auth-container h2 {
+                    margin-top: 0;
+                    color: #333;
+                    text-align: center;
+                }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+                .form-group label {
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #555;
+                    font-weight: bold;
+                    font-size: 0.9em;
+                }
+
+                .form-group input {
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                }
+
+            .auth-btn {
+                width: 100%;
+                padding: 10px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-weight: bold;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+
+                .auth-btn:hover {
+                    background-color: #0056b3;
+                }
+
+            .error-message {
+                color: #dc3545;
+                background-color: #f8d7da;
+                padding: 10px;
+                border-radius: 4px;
+                margin-bottom: 15px;
+                font-size: 0.9em;
+                text-align: center;
+            }
+
+            .login-link {
+                display: block;
+                text-align: center;
+                margin-top: 15px;
+                font-size: 0.9em;
+                color: #666;
+            }
+
+                .login-link a {
+                    color: #007bff;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Öğrenci Kaydı</h2>
+
+        @if (ViewBag.Hata != null)
+        {
+            <div class="error-message">
+                @ViewBag.Hata
+            </div>
+        }
+
+        <form asp-controller="Auth" asp-action="Register" method="post">
+            <div class="form-group">
+                <label>Ad Soyad</label>
+                <input type="text" name="adSoyad" required placeholder="Örn: Süleyman Badalov" />
+            </div>
+
+            <div class="form-group">
+                <label>E-Posta Adresi</label>
+                <input type="email" name="eposta" required placeholder="Örn: ornek@kocaeli.edu.tr" />
+            </div>
+
+            <div class="form-group">
+                <label>Şifre</label>
+                <input type="password" name="sifre" required placeholder="Şifrenizi belirleyin" minlength="6" />
+            </div>
+
+            <div class="form-group">
+                <label>Şifre (Tekrar)</label>
+                <input type="password" name="sifreTekrar" required placeholder="Şifrenizi tekrar girin" minlength="6" />
+            </div>
+
+            <button type="submit" class="auth-btn">Kayıt Ol</button>
+        </form>
+
+        <div class="login-link">
+            Zaten hesabınız var mı? <a href="/Auth/Login">Giriş Yap</a>
+        </div>
+    </div>
+</body>
+</html>

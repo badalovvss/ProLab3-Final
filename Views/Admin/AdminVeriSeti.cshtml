@@ -1,0 +1,76 @@
+﻿@using StajYönetimSistemi.Controllers
+@{
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+    ViewData["Title"] = "Test Veri Seti Kontrolü";
+    var raporlar = ViewBag.Rapor as List<VeriSetiRapor>;
+}
+<link rel="stylesheet" href="@Url.Content("~/css/adminbasvuru.css")" />
+
+<div class="ab-page">
+    <div class="ab-page-heading">
+        <div>
+            <p class="ab-eyebrow">VERİ YÖNETİMİ</p>
+            <h1>Test Veri Seti Karşılaştırması</h1>
+            <p class="ab-subtitle">Vize 4. Madde gereği: Dışarıdan yüklenen CSV veri seti ile sistemdeki kayıtları karşılaştırın.</p>
+        </div>
+    </div>
+
+    @if (ViewBag.Hata != null)
+    {
+        <div style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            <strong>@ViewBag.Hata</strong>
+        </div>
+    }
+
+    <!-- DOSYA YÜKLEME ALANI -->
+    <section class="ab-card" style="margin-bottom: 30px; padding: 20px;">
+        <form asp-controller="Admin" asp-action="VeriSetiKarsilastir" method="post" enctype="multipart/form-data" style="display: flex; align-items: center; gap: 15px;">
+            <input type="file" name="veriDosyasi" accept=".csv" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; flex-grow: 1;" />
+            <button type="submit" style="background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                Veri Setini Karşılaştır
+            </button>
+        </form>
+        <small style="color: #6c757d; margin-top: 10px; display: block;">* Kabul edilen format: Öğrenci No, Ad Soyad, Statü (CSV formatında olmalıdır)</small>
+    </section>
+
+    <!-- KARŞILAŞTIRMA SONUÇ TABLOSU -->
+    @if (raporlar != null)
+    {
+        <section class="ab-card">
+            <div class="ab-card-heading ab-list-heading">
+                <h2>Sistem Analiz Raporu</h2>
+                <span style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.9em;">@raporlar.Count Kayıt İncelendi</span>
+            </div>
+
+            <div class="ab-table-wrap">
+                <table class="ab-table">
+                    <thead>
+                        <tr>
+                            <th>Öğrenci No</th>
+                            <th>Ad Soyad (Test Verisi)</th>
+                            <th>Test Verisindeki Durum</th>
+                            <th>Sistemdeki Durum</th>
+                            <th>Karşılaştırma Sonucu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var rapor in raporlar)
+                        {
+                            <tr style="background-color: @(rapor.EslesiyorMu ? "#f8fff9" : "#fff5f5")">
+                                <td style="padding: 15px; font-weight: bold;">@rapor.OgrenciNo</td>
+                                <td style="padding: 15px;">@rapor.AdSoyad</td>
+                                <td style="padding: 15px;">@rapor.CsvDurum</td>
+                                <td style="padding: 15px;">
+                                    <strong>@rapor.SistemDurum</strong>
+                                </td>
+                                <td style="padding: 15px; color: @(rapor.EslesiyorMu ? "green" : "red"); font-weight: bold;">
+                                    @rapor.SonucMesaji
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    }
+</div>

@@ -1,0 +1,111 @@
+﻿@{
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+
+    ViewData["Title"] = "Kontrol Sonucu";
+    ViewData["AktifMenu"] = "KontrolSonucu";
+
+    // ViewData yerine Controller'da atadığımız ViewBag değişkenlerini çekiyoruz
+    string kontrolOzeti = ViewBag.SonucMesaji as string ?? "";
+    string dosyaAdi = ViewBag.BelgeAdi as string ?? "";
+    bool sonucVar = !string.IsNullOrWhiteSpace(kontrolOzeti);
+}
+
+<link rel="stylesheet" href="@Url.Content("~/css/sonucekranlari.css")" />
+
+<div class="sr-page">
+
+    <header class="sr-heading">
+        <div>
+            <p class="sr-eyebrow">STAJ EVRAKLARI</p>
+            <h1>Kontrol sonucu</h1>
+            <p>Ek-16 belgenize ait kontrol bilgilerini görüntüleyin.</p>
+        </div>
+
+        <!-- DÜZELTİLDİ: Gerçek Başvuru Durumu sayfasına gider -->
+        <a class="sr-button sr-button-light" asp-controller="Ogrenci" asp-action="BasvuruDurumu">
+            Başvuru durumuna git
+        </a>
+    </header>
+
+    <div class="sr-grid">
+
+        <!-- BELGE KONTROLÜ -->
+        <section class="sr-card">
+            <div class="sr-card-title">
+                <span class="sr-icon sr-icon-blue" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 3h8l4 4v14H6z"></path>
+                        <path d="M14 3v5h4M9 12h6M9 16h4"></path>
+                    </svg>
+                </span>
+                <div>
+                    <h2>Belge kontrolü</h2>
+                    <p>Ek-16 belgesine ilişkin sonuç</p>
+                </div>
+            </div>
+
+            <div class="sr-file-row">
+                <span>Belge adı</span>
+                <strong>@(string.IsNullOrWhiteSpace(dosyaAdi) ? "—" : dosyaAdi)</strong>
+            </div>
+
+            @if (sonucVar)
+            {
+                <div class="sr-result" role="status">
+                    <h3>Kontrol sonucu</h3>
+                    <p>@kontrolOzeti</p>
+                </div>
+            }
+            else
+            {
+                <div class="sr-empty">
+                    <span class="sr-empty-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 3h8l4 4v14H6z"></path>
+                            <path d="M14 3v5h4M9 12h6M9 16h4"></path>
+                        </svg>
+                    </span>
+                    <h3>Görüntülenecek kontrol sonucu bulunmuyor</h3>
+                    <p>Belgenize ait kontrol bilgileri bu alanda gösterilir.</p>
+
+                    <!-- DÜZELTİLDİ: Gerçek Evrak Yükle sayfasına gider -->
+                    <a class="sr-button sr-button-primary" asp-controller="Ogrenci" asp-action="EvrakYukle">
+                        Ek-16 yükle
+                    </a>
+                </div>
+            }
+        </section>
+
+        <!-- KONTROL ALANLARI -->
+        <section class="sr-card">
+            <div class="sr-card-title">
+                <span class="sr-icon sr-icon-violet" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 5h11M9 12h11M9 19h11"></path>
+                        <path d="M4 5h.01M4 12h.01M4 19h.01"></path>
+                    </svg>
+                </span>
+                <div>
+                    <h2>Kontrol alanları</h2>
+                    <p>Ek-16 belgesindeki temel bilgiler</p>
+                </div>
+            </div>
+
+            <div class="sr-categories">
+                <div>
+                    <span class="sr-dot sr-blue"></span>
+                    <span>Öğrenci bilgileri</span>
+                </div>
+                <div>
+                    <span class="sr-dot sr-purple"></span>
+                    <span>Staj tarihleri ve günleri</span>
+                </div>
+                <div>
+                    <span class="sr-dot sr-coral"></span>
+                    <span>Belge alanları</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
